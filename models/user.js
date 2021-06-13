@@ -1,5 +1,9 @@
 const config = require('config');
 const mongoose = require('mongoose');
+
+
+
+// mongodb table
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -21,3 +25,10 @@ const UserSchema = new mongoose.Schema({
     },
     profileImage:{ type : String}
 });
+UserSchema.methods.generateAuthToken = function() { 
+    const token = jwt.sign({ _id: this._id, name:this.name,email:this.email}, config.get('myprivatekey')); 
+    return token;
+  }
+  
+
+exports.User = user; 
