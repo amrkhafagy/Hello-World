@@ -3,6 +3,8 @@
 const express = require('express');
 
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
 const config = require("config");
 
 var mongoose = require('mongoose');
