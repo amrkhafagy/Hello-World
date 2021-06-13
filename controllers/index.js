@@ -1,4 +1,4 @@
-// Import router package
+// Import router package and users
 
 const router = require('express').Router();
 
