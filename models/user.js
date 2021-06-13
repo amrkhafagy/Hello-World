@@ -32,6 +32,9 @@ UserSchema.methods.generateAuthToken = function() {
     return token;
   }
   
-  const user = mongoose.model('User', UserSchema);
+const user = mongoose.model('User', UserSchema);
+  
+
+// export the mongodb and connection pool objects
 
 exports.User = user; 

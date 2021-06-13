@@ -25,8 +25,9 @@ const BookingSchema = new mongoose.Schema({
 
 
 
+const booking = mongoose.model('Booking', BookingSchema);
 
 
 
-
+// export the mongodb and connection pool objects
 exports.Booking = booking; 
