@@ -1,15 +1,24 @@
 // require imports packages required by the application
-
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
 const config = require("config");
+const mongoose = require('mongoose');
+const  cors = require('cors');
 
-var mongoose = require('mongoose');
-var mongoDB = 'mongodb://127.0.0.1/testno';
 
+
+if (!config.get("myprivatekey")) {
+    console.error("FATAL ERROR: myprivatekey is not defined.");
+    process.exit(1);
+}
+var mongoDB = config.get("uri");
+mongoose.connect(mongoDB, {useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true})
+.then(() => {console.log("Connected to MongoDB...")})
+    .catch(err => console.error("Could not connect to MongoDB..."));;
+
+    //Get the default connection
+var db = mongoose.connection;
 
 // Define Host name and TCP Port for the server
 
@@ -18,8 +27,7 @@ const HOST = '127.0.0.1';
 const PORT = 8080;
 
 
-//Get the default connection
-var db = mongoose.connection;
+
 
 // app is a new instance of express (the web app framework)
 
