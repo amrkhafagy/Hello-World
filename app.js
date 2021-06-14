@@ -12,6 +12,8 @@ if (!config.get("myprivatekey")) {
     console.error("FATAL ERROR: myprivatekey is not defined.");
     process.exit(1);
 }
+
+
 var mongoDB = config.get("uri");
 mongoose.connect(mongoDB, {useNewUrlParser: true, useCreateIndex: true,useUnifiedTopology: true})
 .then(() => {console.log("Connected to MongoDB...")})
@@ -19,6 +21,10 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useCreateIndex: true,useUnifie
 
     //Get the default connection
 var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 // Define Host name and TCP Port for the server
 
@@ -50,12 +56,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // Allow app to support differnt body content types (using the bidyParser package)
 
 app.use(bodyParser.text());
-
 app.use(bodyParser.json()); // support json encoded bodies
-
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-// Controllers - Configure app Routes to handle requests from browser
+//Controllers = Configure app Routes to handle requests from browser
+
+
 
 // The home page
 
