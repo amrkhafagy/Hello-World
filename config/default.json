@@ -1,4 +1,4 @@
 {
-    "myprivatekey": "shehzadmalik",
-    "uri":"mongodb+srv://shehzad_kareem_137:test1122@cluster0.lamak.mongodb.net/test?retryWrites=true&w=majority"
+    "myprivatekey": "BookingSystem",
+    "uri":"mongodb+srv://Helloworld:Helloworld2020@cluster0.9keju.mongodb.net/BookingSystem?retryWrites=true&w=majority"
 }
