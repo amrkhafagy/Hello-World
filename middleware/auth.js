@@ -1,4 +1,6 @@
 const config = require("config");
+const jwt = require("jsonwebtoken");
+
 
 
 
@@ -15,7 +17,7 @@ module.exports = function(req, res, next) {
         const decoded = jwt.verify(token, config.get("myprivatekey"));
         req.user = decoded;
         next();
-        
+
     } catch (ex) {
         //if invalid token
         res.status(400).send("Invalid token.");
