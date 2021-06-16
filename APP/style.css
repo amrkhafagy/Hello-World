@@ -1,12 +1,9 @@
+
 body
 {
   background-color: wheat;
 }
-li
-{
-  list-style-type: none;
-  margin-left: 1vw;
-}
+
 
 li:first-child
 {
@@ -24,6 +21,7 @@ footer
   height: 50vh;
   background-color: lightgray;
 }
+
 
 .container
 {
