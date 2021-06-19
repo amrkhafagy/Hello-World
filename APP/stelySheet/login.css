@@ -54,6 +54,15 @@
 .form .register-form {
   display: none;
 }
+h1 {
+  font-size: 3em;
+  text-align: center;
+  color: #fff;
+  font-weight: 100;
+  text-transform: capitalize;
+  letter-spacing: 4px;
+  font-family: 'Roboto', sans-serif;
+}
 .container {
   position: relative;
   z-index: 1;
