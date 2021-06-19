@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,124 +8,96 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Font Awesome JS -->
     <script class="lazy" data-src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="stelySheet/style.css">
-
-
+    <link rel="stylesheet" href="stelySheet/signup.css">
+    <title>Profile</title>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <nav  class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">ONE LAST TIME </a>
+            <a class="navbar-brand" href="#">User Profile </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="index.html">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Appointments</a>
+                        <a id="loginLink" class="nav-link" href="profile.html">My Profile </a>
                     </li>
                     <li class="nav-item">
-                        <a id="loginLink" class="nav-link" href="#">My Profile</a>
+                        <a id="loginLink" class="nav-link" href="appointmentLst.html">My Appointment </a>
                     </li>
-                    <li class="nav-item">
-                        <a id="loginLink" class="nav-link" href="#">Logout</a>
-                    </li>
+                    
+                    <li><a id="hello" href="#" class="smoothScroll"></a></li>
+                    
                 </ul>
             </div>
         </div>
     </nav>
-<!--body stard here --> 
-<form class="modal-content animate" action="/action_page.php" style="text-align: center;"> 
+     <!--main-->
+     
+    <form class="modal-content animate" action="/action_page.php" style="width: 50%; margin-left: 20%;margin-top: 5%;"> </form>
           
-            <div class="container">
-              <div class="content">
-                <h2 >My Profile</h2><br><br>
-                <div class="row">
-                  <div class="col-md-2"> 
-                      <h3 style="color: green;"><b>Name : </b></h3>
-                  </div>
-                  <div class="col-md-8">
-                      <h4 id="name">Amr Khafagy </h4>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-2"> 
-                      <h3 style="color: green;"><b>Email : </b></he></br>
-                  </div>
-                  <div class="col-md-8">
-                      <h4 id="email">amr.khafagy@yahoo.com</h4>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-md-2"> 
-                    <h3 style="color: green;"><b>Phone No : </b></h3></br>
-                </div>
-                <div class="col-md-8">
-                    <h4 id="phone">0876636625</h4>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-md-2"> 
-                  <h3 style="color: green;" ><b>Address : </b></h3></br>
-              </div>
-              <div class="col-md-8">
-                  <h4 id="address"><em><b>Ireland</b></em></h4>
-              </div>
-          </div>
-              
-           
+    <div class="">
+        <h2 style="color: green;">My Profile</h2>
+    </div>
+
+    
+  <div class="container" style="margin-left: 30% !important;">
+    </br>
+    <div class="row">
+        <div class="col-md-2"> 
+            <h3 style="color: green;"><b>Name</b></h3>
+        </div>
+        <div class="col-md-8">
+            <h4 id="name">Amr Khafagy </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"> 
+            <h3 style="color: green;"><b>Email</b></he></br>
+        </div>
+        <div class="col-md-8">
+            <h4 id="email">amr.khafagy@yahoo.com</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"> 
+            <h3 style="color: green;"><b>Phone No.</b></h3></br>
+        </div>
+        <div class="col-md-8">
+            <h4 id="phone">0876636625</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"> 
+            <h3 style="color: green;" ><b>Address</b></h3></br>
+        </div>
+        <div class="col-md-8">
+            <h4 id="address">IRELAND</h4>
+        </div>
+    </div>
+    
+   
+    </br>
+  </div>
 </form>
 
-<!--body end here -->      
+
+          <!--main-->
+
      
     
-<!--footer-->
-    <div class="container">
-        <div class="content"></div>
-        <footer class="row">
-          <div class="sozial col-xs-12 col-sm-6 col-sm-push-6">
-            <ul class="row">
-              <li class="col-xs-6 col-sm-2">
-                <a href="#">
-                  <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/online_social_media_facebook-128.png">
-                </a>
-              </li>
-              <li class="col-xs-6 col-sm-2">
-                <a href="#">
-                  <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/twitter_online_social_media-128.png">
-                </a>
-              </li>
-              <li class="col-xs-6 col-sm-2">
-                <a href="#">
-                  <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/instagram_online_social_media_photo-128.png">
-                </a>
-              </li>
-              <li class="col-xs-6 col-sm-2">
-                <a href="#">
-                  <img class="logo" src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/online_social_media_google_plus-128.png">
-                </a>
-              </li>
-            </ul>
-          </div><!-- Ende Sozial media -->
-          
-          <div class="copyright col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> &copy; <em>Online Booking System</em> </p>
-          </div><!-- Ende Copyright -->
-          
-          <div class="impressum col-xs-12 col-sm-3 col-sm-pull-6">
-            <p> <EM>Booking made simple for you</EM> </p>
-            <p> <em>So book now for <b>free</b></em>  </p>
-          </div><!-- Ende Impressum -->
-        </footer>
-      </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
