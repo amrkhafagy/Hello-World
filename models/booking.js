@@ -20,6 +20,15 @@ const BookingSchema = new mongoose.Schema({
      user: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User' 
     },
+    doctor: { 
+        type : String
+    },
+    comment:{
+        type : String
+    },
+    status:{
+        type:String
+    }
 });
 
 
