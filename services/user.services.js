@@ -1,6 +1,10 @@
 const { User } = require('../models/user');
 const { Booking } = require('../models/booking');
+const { Booking } = require('../models/doctor');
+
 const bcrypt = require("bcrypt");
+var nodemailer = require('nodemailer');
+
 
 
 exports.getUserByEmail = async (query) => {
@@ -8,6 +12,8 @@ exports.getUserByEmail = async (query) => {
     const user = await User.findOne(query);
     return user;
 };
+
+
 exports.create = async (query) => {
     console.log("query",query);
     const user = new User(query);
@@ -17,20 +23,32 @@ exports.create = async (query) => {
     return await user.save();
 
 };
+
+
+
 exports.approvebook = async (query,data) => {
     console.log("data",data);
     console.log("query",query);
    const user = await Booking.findOneAndUpdate(query,data,{new:true});
    return user;
 };
+
+
+
 exports.resetPassword = async (query,data) => {
     const user = await User.findOneAndUpdate(query,data,{new:true});
     return user;
 };
+
+
+
 exports.book = async (query) => {
     const booking = new Booking(query);
     return await booking.save();
 }
+
+
+
 exports.getbook = async (query) => {
     const book = await Booking.find(query);
     return book;
@@ -41,6 +59,8 @@ exports.getdocbook = async (query) => {
     const book = await Booking.find(query);
     return book;
 }
+
+
 
 exports.getbookById = async (query) => {
     const book = await Booking.findOne(query);
@@ -56,3 +76,17 @@ exports.getalldoc = async (query) => {
     const book = await Doctor.find();
     return book;
 }
+
+exports.getallpat = async (query) => {
+    const book = await User.find();
+    return book;
+}
+
+
+
+exports.deletebook = async (query) => {
+    console.log(query)
+    const book = await Booking.findOneAndDelete(query);
+    return book;
+}
+
