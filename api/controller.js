@@ -66,3 +66,34 @@ exports.signinUser = async (req,res)=>{
     }
    });
  };
+ exports.book = async (req,res) => {
+    console.log("req",req.body);
+    let book = await UserServices.getbook({doctor:req.body.doctor,date:req.body.date,time:req.body.time});
+    console.log("booking found is : ",book.length);
+      if(book.length!=0){
+        res.status(400).json({
+          message:"Doctor Not Available"
+        })
+      }else{
+        book = await UserServices.book(req.body);
+        console.log("book",book);
+        res.status(200).json({
+          message:"Appointment Created Success",
+          data:book
+        });
+      }
+  
+};
+  
+exports.getmybook = async (req,res) => {
+    let book = await UserServices.getbook({user:req.params.userid});
+    if(book){
+      res.status(200).json({
+        data:book
+      })
+    }else{
+      res.status(400).json({
+        message:"Appointment Not Found",
+      });
+    }
+  };
