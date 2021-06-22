@@ -236,37 +236,17 @@ exports.approvebook = async (req,res) => {
       console.log("verify email",req.params);
     }
     
-    exports.getUser = async (req,res) => {
-      var user = await UserServices.getUserByEmail({email:req.params.email});
-      if(user){
+exports.getUser = async (req, res) => {
+    var user = await UserServices.getUserByEmail({ email: req.params.email });
+    if (user) {
         res.status(200).json({
-          data:user
+            data: user
         });
-      } else {
-       res.status(400).json({
-         message:"User Not found",
-       });
-      }
-    }
-    
-    exports.makePayment = async (req,res) => {
-        const payment = await UserServices.makePayment({
-          date: new Date(),
-          userEmail: req.body.email,
-          booking: req.body.book,
-          amount: req.body.amount
+    } else {
+        res.status(400).json({
+            message: "User Not found",
         });
-    
-        console.log("payment",payment);
-        if(payment){
-          res.status(200).json({
-            message:"Payment Received success",
-            data: payment
-          });
-        } else {
-          res.status(400).json({
-            message:"Payment can not processed",
-          });
-        }
-    
     }
+}
+    
+    
