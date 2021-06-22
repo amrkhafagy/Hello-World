@@ -121,4 +121,16 @@ exports.getdocbook = async (req,res) => {
         message:"Appointment Not Found",
       });
     }
+};
+  
+exports.getdoctors = async (req,res) => {
+    let book = await UserServices.getalldoc();
+    if(book){
+      res.status(200).json({
+        data:book    })
+    }else{
+      res.status(400).json({
+        message:"Doctor Not Found",
+      });
+    }
   };
