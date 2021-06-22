@@ -96,4 +96,17 @@ exports.getmybook = async (req,res) => {
         message:"Appointment Not Found",
       });
     }
+};
+exports.getdocbook = async (req,res) => {
+    let book = await UserServices.getdocbook({doctor:req.params.docname});
+    if(book){
+      res.status(200).json({
+        data:book
+      })
+    }else{
+      res.status(400).json({
+        message:"Appointment Not Found",
+      });
+    }
   };
+  
