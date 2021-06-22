@@ -133,4 +133,30 @@ exports.getdoctors = async (req,res) => {
         message:"Doctor Not Found",
       });
     }
+};
+  
+exports.getpatients = async (req,res) => {
+    let book = await UserServices.getallpat();
+    if(book){
+      res.status(200).json({
+        data:book    })
+    }else{
+      res.status(400).json({
+        message:" Not Found",
+      });
+    }
+  };
+  
+  exports.getbookById = async (req,res) => {
+    let book = await UserServices.getbookById({_id:req.params.bookid});
+    console.log(book);
+    if(book){
+      res.status(200).json({
+        data:book
+      })
+    }else{
+      res.status(400).json({
+        message:"Appointment Not Found",
+      });
+    }
   };
