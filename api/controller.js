@@ -54,7 +54,7 @@ exports.signinUser = async (req,res)=>{
         );
       console.log("login success "+token)
        res.header("x-auth-token", token).status(200).json({
-           message:"login Successfuly...!!!",
+           message:"login Successfuly...",
            token:token,
            data:user
        });
@@ -68,13 +68,17 @@ exports.signinUser = async (req,res)=>{
  };
  exports.book = async (req,res) => {
     console.log("req",req.body);
+
+   
     let book = await UserServices.getbook({doctor:req.body.doctor,date:req.body.date,time:req.body.time});
     console.log("booking found is : ",book.length);
       if(book.length!=0){
         res.status(400).json({
           message:"Doctor Not Available"
         })
-      }else{
+      }
+      else
+      {
         book = await UserServices.book(req.body);
         console.log("book",book);
         res.status(200).json({
@@ -178,7 +182,7 @@ exports.deletebook = async (req,res) => {
 };
 exports.approvebook = async (req,res) => {
 
-    console.log("approve book m hai ")
+    console.log("approve book ")
     console.log(req.body)
       let book = await UserServices.approvebook({_id: req.body._id},{status:req.body.status});
       if(book){
