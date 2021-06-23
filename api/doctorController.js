@@ -1,9 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const DoctorServices = require('../services/doctor.services');
-
-exports.register = async (req, res) => {
+const DoctorServices = require('../services/doctor.services');exports.register = async (req, res) => {
 
     var user = await DoctorServices.getUserByEmail({ email: req.body.email });
 
