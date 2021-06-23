@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const UserServices = require('../services/user.services');
 
 
 exports.registerUser = async (req, res) => {
@@ -234,7 +235,8 @@ exports.approvebook = async (req,res) => {
     exports.verifyEmail = async(req,res) => {
     
       var user = await UserServices.getUserByEmail({email:req.params.email});
-      if(user && user._id == req.params.token){
+      if (user && user._id == req.params.token)
+      {
         res.send("Account verfied Success");
       }
       console.log("verify email",req.params);
