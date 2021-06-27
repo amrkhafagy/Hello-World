@@ -1,6 +1,6 @@
-const { User } = require('../models/user');
-const { Booking } = require('../models/booking');
-const { Booking } = require('../models/doctor');
+const  User  = require('../models/user');
+const  Booking  = require('../models/booking');
+const  doctor  = require('../models/doctor');
 
 const bcrypt = require("bcrypt");
 var nodemailer = require('nodemailer');
