@@ -22,7 +22,8 @@
           <form class="login-form">
             <input type="text" id="userName" placeholder="username"/>
             <input type="password"  id="password" placeholder="password"/>
-            <button>login</button>
+
+            <button value="login" onclick="validate()">login</button>
             
             <p><a href="forget.html">Forgot password?</a></p>
 
@@ -34,6 +35,39 @@
         </div>
       </div>
     <!--main-->
+    <!--javascript -->
+    <script>
+      
+function validate(){
+  var userName=document.getElementById("userName").value;
+  var password=document.getElementById("password").value;
+
+  if(userName == "admain" && password == "user")
+  {
+    alert("login succesfully")
+    return false ;
+
+  }
+  else{
+    alert(" login failed");
+    // Disabling fields after 3 attempts.
+
+    if( attempt == 0){
+      document.getElementById("username").disabled = true;
+      document.getElementById("password").disabled = true;
+      document.getElementById("submit").disabled = true;
+      return false;
+}
+
+}
+
+
+}
+    </script>
+    <!--javascript-->
+
+
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
