@@ -21,13 +21,21 @@
       <h1>Fill in the data below.</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
-          <form method="post" action="Default.aspx" id="form1"
-           >
+          <form method="post" action="Default.aspx" id="form1">
+
             <input class="text" type="text" id="txtUsername" name="Username" placeholder="Username" required="">
+
             <input class="text email" type="email" id="email"
             name="email" placeholder="Email" required="">
-            <input class="text" id="txtPassword" type="password" name="password" placeholder="Password" required="">
-            <input class="text w3lpass" id="txtConfirmPassword" type="password" name="password" placeholder="Confirm Password" required="">
+
+            
+
+            <input class="text" id="password" type="password" name="password" placeholder="Password" required="">
+
+            
+
+            <input class="text w3lpass" id="password2" type="password" name="password" placeholder="Confirm Password" required="">
+
             <div class="wthree-text">
               <label class="anim">
                 <input type="checkbox" class="checkbox" required="">
@@ -35,6 +43,7 @@
               </label>
               <div class="clear"> </div>
             </div>
+
             <input type="submit" value="Sign up" id="btnSignup">
           </form>
           <p>Don't have an Account? <a href="loginuser.html"> Login Now!</a></p>
@@ -46,6 +55,56 @@
     <!-- //main -->
 
     <!-- //JavaScript -->
+<script>
+  const form=document.getElementById("form");
+  const Username=document.getElementById("Username");
+  const email=document.getElementById("email");
+  const password=document.getElementById("password");
+  const password2=document.getElementById("password2");
+
+  form.addEventListener('submit',(e)=> {
+    e.preventDefault();
+    checkInputs();
+  })
+  function checkInputs(){
+    const UsernameValue= Username.value.trim();
+    const emailValue= email.value.trim();
+    const passworldValue= password.value.trim();
+    const passworld2Value= password2.value.trim();
+
+    if(UsernameValue === ''){
+      setErrorFor(Username,'Username cannot be blank')
+    }
+    else{
+      setSuccessFor(Username);
+    }
+    if(emailValue === ''){
+      setErrorFor(Username,'emailValue cannot be blank')
+    }
+    else{
+      setSuccessFor(emailValue);
+    }
+
+    if(emailValue === ''){
+      setErrorFor(Username,'emailValue cannot be blank')
+    }
+    else{
+      setSuccessFor(emailValue);
+    }
+
+
+
+
+
+
+
+  }
+
+
+
+</script>
+
+
 <script>
    window.onload = function () {
     var txtPassword = document.getElementById("txtPassword");
