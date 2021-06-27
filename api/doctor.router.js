@@ -1,26 +1,25 @@
 const express = require("express");
 const DoctorRouter = express.Router();
-
-const DoctorController = require('./doctorController');
-DoctorRouter.post('/signup', DoctorController.register);
+const DoctorControllers = require('./doctorController');
 
 
+DoctorRouter.post('/signup',DoctorControllers.register);
 
-DoctorRouter.get('/signup', (req, res) => {
-    res.send('Hello doctor!')
-});
+//DoctorRouter.get('/signup', (req, res) => {
+   // res.send('Hello doctor!')
+//});
 
 
-DoctorRouter.post('/signin',DoctorController.signin);
+DoctorRouter.post('/signin',DoctorControllers.signin);
 
-DoctorRouter.get('/:email', DoctorController.getUser);
-
+DoctorRouter.get('/:email', DoctorControllers.getUser);
 
 
 
-DoctorRouter.put('/updateProfile', DoctorController.updateProfile);
 
-DoctorRouter.put('/forgetPassword', DoctorController.forgetPassword);
+//DoctorRouter.put('/updateProfile', DoctorControllers.updateProfile);
+
+//DoctorRouter.put('/forgetPassword', DoctorControllers.forgetPassword);
 
 
 module.exports = DoctorRouter;

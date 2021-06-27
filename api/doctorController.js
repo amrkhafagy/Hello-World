@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const DoctorServices = require('../services/doctor.services');
+const DoctorServices = require('./services/doctorController');
 
 
 
