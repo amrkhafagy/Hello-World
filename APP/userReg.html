@@ -17,15 +17,17 @@
   <!-- main -->
  
     <div class="main-w3layouts wrapper">
-      <h1>please complete your personal information</h1>
       <h1>User Sign Up Screen</h1>
+      <h1>Fill in the data below.</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
-          <form action="#" method="post">
-            <input class="text" type="text" name="Username" placeholder="Username" required="">
-            <input class="text email" type="email" name="email" placeholder="Email" required="">
-            <input class="text" id="pass1" type="password" name="password" placeholder="Password" required="">
-            <input class="text w3lpass" id="pass2" type="password" name="password" placeholder="Confirm Password" required="">
+          <form method="post" action="Default.aspx" id="form1"
+           >
+            <input class="text" type="text" id="txtUsername" name="Username" placeholder="Username" required="">
+            <input class="text email" type="email" id="email"
+            name="email" placeholder="Email" required="">
+            <input class="text" id="txtPassword" type="password" name="password" placeholder="Password" required="">
+            <input class="text w3lpass" id="txtConfirmPassword" type="password" name="password" placeholder="Confirm Password" required="">
             <div class="wthree-text">
               <label class="anim">
                 <input type="checkbox" class="checkbox" required="">
@@ -33,9 +35,9 @@
               </label>
               <div class="clear"> </div>
             </div>
-            <input type="submit" value="SIGNUP" a>
+            <input type="submit" value="Sign up" id="btnSignup">
           </form>
-          <p>Don't have an Account? <a href="#"> Login Now!</a></p>
+          <p>Don't have an Account? <a href="loginuser.html"> Login Now!</a></p>
         </div>
       </div>
       
@@ -45,6 +47,23 @@
 
     <!-- //JavaScript -->
 <script>
+   window.onload = function () {
+    var txtPassword = document.getElementById("txtPassword");
+    var txtConfirmPassword = document.getElementById("txtConfirmPassword");
+    txtPassword.onchange = ConfirmPassword;
+    txtConfirmPassword.onkeyup = ConfirmPassword;
+
+    function ConfirmPassword() {
+            txtConfirmPassword.setCustomValidity("");
+            if (txtPassword.value != txtConfirmPassword.value) {
+                txtConfirmPassword.setCustomValidity("Passwords do not match.");
+            }
+          }
+
+
+
+   }
+  
   
 </script>
 

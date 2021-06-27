@@ -98,7 +98,38 @@
           <!--main-->
 
      
-    
+<!--JavaScript-->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const email = localStorage.getItem('email')
+        const id = localStorage.getItem('userid')
+        console.log('Get data', email, id)
+
+
+        fetch(`http://localhost:8080/Api/v1/user/${email}`)
+        .then(response => response.json())
+        .then(customer => {
+            document.getElementById('name').value = customer.data.name ?? 'NIL'
+            document.getElementById('email').value = customer.data.email ?? 'NIL'
+            document.getElementById('phone').value = customer.data.phone ?? 'NIL'
+            document.getElementById('address').value = customer.data.address ?? 'NIL'
+            console.log('dsfsfsdfsfsd', customer)
+        },
+       function (e) 
+       {
+        alert('Error!')
+        console.log('ERROR: ', e)
+      })
+  })
+</script>
+
+
+
+
+<!--JavaScript-->
+
 
 
     <!-- Optional JavaScript -->
