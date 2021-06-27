@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require("config");
 const mongoose = require('mongoose');
+//const cookieParser = require('cookie-parser'),
+
 const cors = require('cors');
 const app = express();
 app.use(cors())
@@ -70,20 +72,30 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Application settings
 
+app.use(express.json());
+//app.use(body.json());
+//app.use(body.urlencoded({extended:false}));
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+
+app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 
 
 
 
-//Controllers = Configure app Routes to handle requests from browser
-// The home page
-
-app.use('/', require('./controllers/index'));
 
 
 
-// catch 404 and forward to error handler
 
 
 app.use('/Api/v1/user', require('./api/routes'));

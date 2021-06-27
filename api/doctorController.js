@@ -1,27 +1,33 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const DoctorServices = require('../services/doctor.services');exports.register = async (req, res) => {
+const DoctorServices = require('../services/doctor.services');
 
-    var user = await DoctorServices.getUserByEmail({ email: req.body.email });
 
-    console.log("Doctor", user);
-    if (user) {
+
+exports.register = async (req, res) => {
+
+
+    var user = await DoctorServices.getUserByEmail({email:req.body.email});
+
+    console.log("Doctor",user);
+    if(user) { 
         return res.status(409).json({
-            error: "Doctor already exists "
-        });
-        user = await DoctorServices.create(req.body);
+            error:"Doctor already exists "
+        }); 
+    }
 
-    
-    
-        res.status(201).json({
-            message: " Doctor Created Success ",
-            name: user.name,
-            email: user.email
-        });
-    
-    };
+    user = await DoctorServices.create(req.body);
+
+
+    res.status(201).json({
+        message: "Doctor Created Success",
+        name: user.name,
+        email: user.email
+    });
+
 };
+   
 exports.signin = async (req,res)=>{
   
     var user = await DoctorServices.getUserByEmail({email:req.body.email});
@@ -60,16 +66,19 @@ exports.signin = async (req,res)=>{
         });
     }
    });
- };
-exports.getUser = async (req, res) => {
-    var user = await DoctorServices.getUserByEmail({ email: req.params.email });
-    if (user) {
-        res.status(200).json({
-            data: user
-        });
-    } else {
-        res.status(400).json({
-            message: "User Not found",
-        });
-    }
 };
+ 
+
+
+ exports.getUser = async (req,res) => {
+    var user = await DoctorServices.getUserByEmail({email:req.params.email});
+    if(user){
+      res.status(200).json({
+        data:user
+      });
+    } else {
+     res.status(400).json({
+       message:"User Not found",
+     });
+    }
+  }

@@ -3,7 +3,6 @@ const  Booking  = require('../models/booking');
 const  doctor  = require('../models/doctor');
 
 const bcrypt = require("bcrypt");
-var nodemailer = require('nodemailer');
 
 
 
