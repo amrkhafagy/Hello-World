@@ -19,7 +19,7 @@ exports.register = async (req,res) => {
 
     user = await DoctorServices.create(req.body);
 
-    await DoctorServices.sendEmail({email:user.email,token:user._id});
+    // await DoctorServices.sendEmail({email:user.email,token:user._id});
 
     res.status(201).json({
         message: "Doctor Created Success",
@@ -71,32 +71,18 @@ exports.signin = async (req,res)=>{
   });
 };
 
-exports.book = async (req, res) => {
-  console.log("req", req.body);
-  let book = await DoctorServices.getbook({ doctor: req.body.doctor, date: req.body.date, time: req.body.time });
-  console.log("book", book);
-  if (book) {
-    res.status(400).json({
-      message: "Doctor Not Available"
-    })
+
+  
+exports.getUser = async (req,res) => {
+  var user = await DoctorServices.getUserByEmail({email:req.params.email});
+  if(user){
+    res.status(200).json({
+      data:user
+    });
   } else {
-    book = await DoctorServices.book(req.body);
-    var user = await DoctorServices.getUserByEmail({ _id: req.body.user });
+   res.status(400).json({
+     message:"User Not found",
+   });
   }
-      
-
-  exports.getUser = async (req, res) => {
-      var user = await DoctorServices.getUserByEmail({ email: req.params.email });
-      if (user) {
-        res.status(200).json({
-          data: user
-        });
-      } else {
-        res.status(400).json({
-          message: "User Not found",
-        });
-      }
-    }
-
-  }
+}
 
