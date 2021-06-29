@@ -67,11 +67,9 @@ exports.signinUser = async (req,res)=>{
     }
    });
  };
- exports.book = async (req,res) => {
-    console.log("req",req.body);
-
-   
-    let book = await UserServices.getbook({doctor:req.body.doctor,date:req.body.date,time:req.body.time});
+exports.book = async (req,res) => {
+  console.log("req", req.body);
+  let book = await UserServices.getbook({ doctor: req.body.doctor, date: req.body.date, time: req.body.time });
     console.log("booking found is : ",book.length);
       if(book.length!=0){
         res.status(400).json({
@@ -230,9 +228,9 @@ exports.approvebook = async (req,res) => {
            message:"User Not found",
          });
         }
-    };
-    
-    exports.verifyEmail = async(req,res) => {
+};
+
+exports.verifyEmail = async (req, res) => {
     
       var user = await UserServices.getUserByEmail({email:req.params.email});
       if (user && user._id == req.params.token)
