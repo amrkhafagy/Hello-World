@@ -99,7 +99,7 @@ app.use(function(req, res, next) {
 
 
 app.use('/Api/v1/user', require('./api/routes'));
-app.use('/Api/v1/doctor', require('./api/doctor.routes'));
+app.use('/Api/v1/doctor', require('./api/doctor.router'));
 
 
 

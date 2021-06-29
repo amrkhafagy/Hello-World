@@ -1,7 +1,7 @@
-const { Booking } = require('../models/doctor');
-const { Booking } = require('../models/booking');
+const { Doctor } = require('../models/doctor');
 const bcrypt = require("bcrypt");
 
+ 
 
 exports.getUserByEmail = async (query) => {
     console.log("query",query);
@@ -35,12 +35,12 @@ exports.resetPassword = async (query,data) => {
 };
 
 
-exports.book = async (query) => {
-    const booking = new Booking(query);
-    return await booking.save();
-};
+//exports.book = async (query) => {
+  //  const booking = new Booking(query);
+   // return await booking.save();
+//};
     
-exports.getbook = async (query) => {
-    const book = await Booking.findOne(query);
-    return book;
-};
+//exports.getbook = async (query) => {
+    //const book = await Booking.findOne(query);
+    //return book;
+//};
