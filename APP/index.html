@@ -155,6 +155,119 @@
     </footer>
 
 
+   <!--JavaScript--> 
+   <script>
+     document.addEventListener('DOMContentLoaded', () => {
+      fetch('http://127.0.0.1:3000/Api/v1/user/getalldoctors')
+      .then(response => response.json())
+      .then(customer => {
+        if (customer.data.length == 0) {
+
+         }
+        else {
+          for (var i = 0; i < customer.data.length; i++) {$("#doctor").append('<option>' + customer.data[i].name + '</option>');}
+        }
+
+        
+        
+      }
+      )
+       function error (e) {
+          alert('Error!')
+          console.log('ERROR: ', e)
+        }
+    })
+    
+          
+   </script>
+
+   <script>
+      var todaydate = new Date();
+          var day = String(todaydate.getDate()).padStart(2, '0');
+          var month = String(todaydate.getMonth() + 1).padStart(2, '0');
+          var year = todaydate.getFullYear();
+          todaydate = year + '-' + month + '-' + day;
+          document.getElementById("date").min=todaydate;
+
+
+
+          function logout() {
+               localStorage.clear();
+               window.location.replace('loginuser.html');
+          }
+
+          document.addEventListener('DOMContentLoaded', () => {
+            const user_name=Document.getElementById("username")
+            document.getElementById("hello").innerHTML=user_name;
+            if (!userid) {
+                    alert("Please Login to Access..??");
+                    window.location.replace('loginuser.html');
+               }
+
+          });
+
+          document.getElementById("#appointment-form").addEventListener('submit', event => {
+                  // Prevent the form from submitting via the browser.
+
+            event.preventDefault()
+            ajaxPost()
+           })
+
+
+           function ajaxPost() {
+                    userid
+                    var id = localStorage.getItem("userid");
+                    var formData = {
+                         date: $("#date").val(),
+                         time: $("#time").val(),
+                         doctor: $("#doctor").val(),
+                         comment: $("#message").val(),
+                         user: id,
+                         status: "pending"
+
+                    }
+
+                    console.log("post data", formData);
+
+
+                    try {
+        const response = await fetch('http://127.0.0.1:5050/Api/v1/user/book', {
+          method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+          credentials: 'same-origin', // include, *same-origin, omit
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData) // body data type must match "Content-Type" header
+        })
+        await response.json()
+        alert('Appointment Created Success')
+        window.location.replace('loginuser.html')
+        console.log(customer);
+        localStorage.setItem("Bid", customer.data._id)
+      } catch (e) {
+        alert('Error!')
+        console.log('ERROR: ', e)
+      }
+     }
+     function resetData () {
+       document.getElementById('name').value = ''
+       document.getElementById('email').value = ''
+    };
+
+
+   </script>
+
+   
+
+
+
+
+
+
+     <!--JavaScript--> 
+
+
+
 
 
 

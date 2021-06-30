@@ -52,62 +52,34 @@
     <!-- //main -->
 
     <!--JavaScript-->
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+    // PREPARE FORM DATA
+    const email = localStorage.getItem('email')
+    const id = localStorage.getItem('userid')
 
+    console.log('Get data', email, id)
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          document.getElementById('loginForm').addEventListener('submit', event => {
-            event.preventDefault()
-      ajaxPost()
-    });
-    async function ajaxPost () {
-      // PREPARE FORM DATA
-      const pass1 = document.getElementById('password1').value
-      const pass2 = document.getElementById('password2').value
-      if (pass1 !== pass2) {
-        alert('Password doesn\'t match please correct Confirm password')
-        document.getElementById('password2').value = ''
-        return
-      }
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    fetch(`http://127.0.0.1:5050/Api/v1/user/${email}`)
+      .then(response => response.json())
+      .then(customer => {
+
+        
+        document.getElementById('name').value = customer.data.name ?? 'NIL'
+        document.getElementById('email').value = customer.data.email ?? 'NIL'
       
 
-
-      const formData = {
-        email: document.getElementById('email').value,
-        password: pass1
-      }
-
-      console.log('post data', formData)
-
-
-      try {
-        const response = await fetch(url, {
-          method: 'PUT', 
-          credentials: 'same-origin', 
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData) 
-        })
-        await response.json()
-        alert('Password Reset Success Success')
-        window.location.replace('login.html')
-      } 
-      catch (e) {
+        console.log('dsfsfsdfsfsd', customer)
+      },
+       function (e) {
         alert('Error!')
         console.log('ERROR: ', e)
-      }
-
-      resetData()
-    }
-    function resetData () {
-      document.getElementById('password1').value = ''
-      document.getElementById('password2').value = ''
-    }
+      })
   })
+</script>
 
-
-    </script>
+    
         <!--JavaScript-->
 
  
