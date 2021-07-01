@@ -16,8 +16,8 @@ app.use(cors())
 // app is a new instance of express (the web app framework)
 
 
-const HOST = '127.0.0.1';
-const PORT = 8088;
+//const HOST = '127.0.0.1';
+const PORT = 5000;
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -110,9 +110,9 @@ app.use('/Api/v1/doctor', require('./api/doctor.router'));
 
 // Listen for incoming connections
 
-var server = app.listen(PORT, HOST, function() {
+var server = app.listen(PORT,  function() {
 
-console.log(`Express server listening on http://${HOST}:${PORT}`);
+console.log(`Express server listening on  http://localhost:${PORT}`);
 
 });
 
