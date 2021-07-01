@@ -17,7 +17,7 @@ app.use(cors())
 
 
 const HOST = '127.0.0.1';
-const PORT = 5050;
+const PORT = 8088;
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

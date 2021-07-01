@@ -23,13 +23,15 @@
             <input type="text" required  id="userName" placeholder="username"/>
             <input id="password" type="password" placeholder="password"/>
             <button value="login" onclick="validate()">login</button>
+            <p><a href="forget.html">Forgot password?</a></p>
 
 
-            <p >Not registered? <a href="doctorsign.html">Create an account</a></p>
 
-            <p >Not registered? <a href="loginuser.html">sign in as a Patient?</a></p>
+            <p>Don't have Account ?<a href="doctorsign.html">SignIn</a></p>
 
-            <p >Not registered? <a href="loginadmin.html">Sign in as a Admin?</a></p>
+            <p>Sign in as a Patient?<a href="loginuser.html">SignIn</a></p>
+
+            <p >Sign in as a Admin?<a href="loginadmin.html">SignIn</a></p>
 
           </form>
 
@@ -39,10 +41,47 @@
         </div>
       </div>
     <!--main-->
+    <!--javascript -->
+    <script>
+     
+      document.addEventListener('DOMContentLoaded', () => {
+        const email = localStorage.getItem('userName')
+        const password = localStorage.getItem('password')
+ 
+         console.log('post data', email, password)
+ 
+ 
+ 
+         fetch(`http://localhost:4050/Api/v1/doctor/userReg`)
+       .then(response => response.json())
+       .then(customer => {
+         console.log("dsfsfsdfsfsd",customer);
+             localStorage.setItem("email", customer.data.email);
+             localStorage.setItem("userid", customer.data._id);
+             localStorage.setItem("username", customer.data.name);
+ 
+             window.location.replace('alldoctors.html');
+       },
+       function (e) {
+         alert('invalid username and passwor')
+         console.log('ERROR: ', e)
+       })
+      });
+      function resetData () {
+        document.getElementById('userName').value = ''
+        document.getElementById('password').value = ''
+     };
+ 
+ 
+         
+       </script>
+     <!--javascript-->
+ 
 
 
 <!--javascript -->
-<script>
+
+<!--script>
       
   function validate(){
     var userName=document.getElementById("userName").value;
@@ -66,15 +105,10 @@
       }
     }
   }
-      </script>
+      </script-->
       <!--javascript-->
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   
 </body>
 </html>

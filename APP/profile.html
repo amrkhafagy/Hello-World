@@ -108,7 +108,7 @@
         console.log('Get data', email, id)
 
 
-        fetch(`http://127.0.0.1:3000/Api/v1/user/${email}`)
+        fetch(`http://127.0.0.1:3050/Api/v1/user/${email}`)
         .then(response => response.json())
         .then(customer => {
             document.getElementById('name').value = customer.data.name ?? 'NIL'

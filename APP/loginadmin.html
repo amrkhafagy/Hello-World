@@ -25,11 +25,13 @@
             <input type="text" required id="userName"  placeholder="username"/>
             <input type="password"  id="password" placeholder="password"/>
             <button value="login" onclick="validate()">login</button>
+            <p><a href="forget.html">Forgot password?</a></p>
+
 
             
-            <p>Not registered? <a href="adminReg.html">Create an account</a></p>
-            <p>Not registered? <a href="loginuser.html">Sign in as a Patient?</a></p>
-            <p>Not registered? <a href="doctorLog.html">Sign in as a Doctor?</a></p>
+            <p>Sign in as a Doctor?<a href="doctorLog.html">SignIn</a></p>
+            <p>Sign in as a Patient? <a href="loginuser.html">SignIn</a></p>
+            
 
 
           </form>
@@ -39,42 +41,40 @@
 
     <!--main-->
 
-   <!--javascript -->
-   <script>
-      
-    function validate(){
-      var userName=document.getElementById("userName").value;
-      var password=document.getElementById("password").value;
-    
-      if(userName == "admain" && password == "user")
-      {
-        alert("login succesfully")
-        return false ;
-    
-      }
-      else{
-        alert(" login failed");
-        // Disabling fields after 3 attempts.
-    
-        if( attempt == 0){
-          document.getElementById("username").disabled = true;
-          document.getElementById("password").disabled = true;
-          document.getElementById("submit").disabled = true;
-          return false;
-    }
-    
-    }
-    
-    
-    }
-        </script>
-        <!--javascript-->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  
+       <!--javascript -->
+       <script>
+     
+        document.addEventListener('DOMContentLoaded', () => {
+          const email = localStorage.getItem('userName')
+          const password = localStorage.getItem('password')
+   
+           console.log('post data', email, password)
+   
+   
+   
+           fetch(`http://localhost:8088/Api/v1/admain/userReg`)
+         .then(response => response.json())
+         .then(customer => {
+           console.log("dsfsfsdfsfsd",customer);
+               localStorage.setItem("email", customer.data.email);
+               localStorage.setItem("userid", customer.data._id);
+               localStorage.setItem("username", customer.data.name);
+   
+               window.location.replace('index.html');
+         },
+         function (e) {
+           alert('invalid username and passwor')
+           console.log('ERROR: ', e)
+         })
+        });
+        function resetData () {
+          document.getElementById('userName').value = ''
+          document.getElementById('password').value = ''
+       };
+   
+   
+           
+         </script>
+       <!--javascript-->
 </body>
 </html>
