@@ -40,7 +40,65 @@
       </div>
     <!--main-->
     <!--javascript -->
+  
+
     <script>
+      $( document ).ready(function() {
+      $("#signupform").submit(function(event) {
+        event.preventDefault();
+        ajaxPost();
+      });
+        
+        
+        function ajaxPost(){
+          
+  
+          var p1 = $("#pass1").val();
+          var p2 = $("#pass2").val();
+          if(p1 == p2){
+            var formData = {
+              name: $("#name").val(),
+              email : $("#email").val(),
+              password :  $("#pass1").val(),
+              
+            }
+          }else{
+            alert("password doesn't match try again");
+          }
+         
+
+          console.log("post data",formData);
+
+          
+          $.ajax({
+          type : "POST",
+          contentType : "application/json",
+          url : 'http://localhost:5000/Api/v1/user/signup',
+          data : JSON.stringify(formData),
+          dataType : 'json',
+          success : function(customer) {
+            alert("User created Success");
+            console.log("dsfsfsdfsfsd",customer);
+            window.location.replace('loginuser.html');
+          },
+          error : function(e) {
+            alert("Error!")
+            console.log("ERROR: ", e);
+          }
+        });
+          
+    
+        }
+        
+        function resetData(){
+          $("#name").val("");
+          $("#email").val("");
+        }
+    });
+    </script>
+
+
+    <!--script>
      
      document.addEventListener('DOMContentLoaded', () => {
        const email = localStorage.getItem('userName')
@@ -50,7 +108,7 @@
 
 
 
-        fetch(`http://localhost:5000/Api/v1/user/userReg`)
+        fetch(`http://localhost:5000/Api/v1/user/userReg.html`)
       .then(response => response.json())
       .then(customer => {
         console.log("dsfsfsdfsfsd",customer);
@@ -73,7 +131,7 @@
 
         
       </script>
-    <!--javascript-->
+    <javascript-->
 
 
     

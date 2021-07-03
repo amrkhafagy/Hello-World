@@ -56,21 +56,26 @@
     
    
   <!-- //main end -->
+
+  
+      
+      
+    
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('signupform').addEventListener('submit', event => {
     event.preventDefault()
     ajaxPost()
   })
   async function ajaxPost () {
     // PREPARE FORM DATA
-    const pass1 = document.getElementById('password1').value
-    const pass2 = document.getElementById('password2').value
-    if (pass1 === pass2) {
+    const password1 = document.getElementById('password1').value
+    const password2 = document.getElementById('password2').value
+    if (password1 === password2) {
       const Username= document.getElementById("Username").value;
       const email= document.getElementById("email").value;
-      const password= document.getElementById("password").value;
-      return
+      const password= document.getElementById("password1").value;
+      
       
     }
     else{
@@ -109,10 +114,7 @@
     document.getElementById('Username').value = ''
     document.getElementById('email').value = ''
   }
-})
-
-
-
+});
 
     </script>
 

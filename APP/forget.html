@@ -61,7 +61,7 @@
     console.log('Get data', email, id)
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-    fetch(`http://127.0.0.1:5050/Api/v1/user/${email}`)
+    fetch('http://localhost:300/Api/v1/user/${email}')
       .then(response => response.json())
       .then(customer => {
 
