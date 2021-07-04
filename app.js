@@ -3,34 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require("config");
 const mongoose = require('mongoose');
-//const cookieParser = require('cookie-parser'),
-
 const cors = require('cors');
 const app = express();
+
+
+
 app.use(cors())
-
-
-
-// Define Host name and TCP Port for the server
-
-// app is a new instance of express (the web app framework)
-
-
 //const HOST = '127.0.0.1';
-const PORT = 300;
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-
-  var err = new Error('Not Found: '+ req.method + ":" + req.originalUrl);
-  
-  err.status = 404;
-  
-  next(err);
-  
-  });
-
-
+const PORT = 345;
 
 // db connection
 if (!config.get("myprivatekey")) {
@@ -50,34 +30,26 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useCreateIndex: true,useUnifie
   
 
 
-    //Get the default connection
+//Get the default connection
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
-
-
-
-
 // Allow app to support differnt body content types (using the bidyParser package)
-//app.use(body.json()); // support json encoded bodies
-//app.use(body.urlencoded({extended:false})); // support encoded bodies
-//app.get('/', (req, res) => {
-  //res.send('Hello World!')})
-
-
-
-
-// Application settings
-
 app.use(express.json());
 //app.use(body.json());
 //app.use(body.urlencoded({extended:false}));
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+
+
+// Application settings
+
+
 
 
 app.use(cors());
@@ -89,10 +61,16 @@ app.use(function(req, res, next) {
 });
 
 
+//catch 404 and forward to error handler
+//app.use(function (req, res, next) {
 
-
-
-
+  //var err = new Error('Not Found: '+ req.method + ":" + req.originalUrl);
+  
+  //err.status = 404;
+  
+ //next(err);
+  
+ // });
 
 
 

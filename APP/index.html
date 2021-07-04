@@ -38,7 +38,7 @@
                     </li>
 
                     <li class="nav-item">
-                      <a id="loginLink" class="nav-link" href="loginuser.html">Logout</a>
+                      <a id="loginLink" class="nav-link" href="login.html">Logout</a>
                   </li>
 
 
@@ -193,7 +193,7 @@
 
           function logout() {
                localStorage.clear();
-               window.location.replace('loginuser.html');
+               window.location.replace('login.html');
           }
 
           document.addEventListener('DOMContentLoaded', () => {
@@ -202,12 +202,12 @@
             if (!userid) {
                     alert("Please Login to Access..??");
                     window.location.replace('loginuser.html');
-               }
+                  }
 
           });
 
           document.getElementById("#appointment-form").addEventListener('submit', event => {
-                  // Prevent the form from submitting via the browser.
+              // Prevent the form from submitting via the browser.
 
             event.preventDefault()
             ajaxPost()
@@ -231,7 +231,7 @@
 
 
                     try {
-        const response = await fetch('http://localhost:300/Api/v1/user/book', {
+        const response = await fetch('http://localhost:345/Api/v1/user/book', {
           method: 'PUT', // *GET, POST, PUT, DELETE, etc.
           credentials: 'same-origin', // include, *same-origin, omit
           headers: {
@@ -241,7 +241,7 @@
         })
         await response.json()
         alert('Appointment Created Success')
-        window.location.replace('loginuser.html')
+        window.location.replace('login.html')
         console.log(customer);
         localStorage.setItem("Bid", customer.data._id)
       } catch (e) {
@@ -250,8 +250,8 @@
       }
      }
      function resetData () {
-       document.getElementById('name').value = ''
-       document.getElementById('email').value = ''
+       document.getElementById('name').value = '';
+       document.getElementById('email').value = '';
     };
 
 
