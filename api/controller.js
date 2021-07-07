@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const UserServices = require('../services/user.services');
@@ -252,5 +252,4 @@ exports.getUser = async (req, res) => {
         });
     }
 }
-    
-    
+

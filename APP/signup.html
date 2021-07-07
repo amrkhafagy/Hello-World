@@ -21,7 +21,7 @@
     <h1>Fill in the data below.</h1>
     <div class="main-agileinfo">
       <div class="agileits-top">
-        <form class="form" id="signupform" action="#" method="post">
+        <form class="form" id="signupform" action="/register" method="post">
 
 
           <input class="text" type="text" id="Username" name="Username" placeholder="Username" required="">
@@ -41,7 +41,7 @@
 
             <div class="clear"> </div>
           </div>
-          <input type="submit" value="SIGNUP" a>
+          <input type="submit" value="submit Form" a>
         </form>
 
 
@@ -53,9 +53,41 @@
     
    
   <!-- //main end -->
+  <script>
+    const form =document.getElementById('signupform')
+    form.addEventListener('submit', registerUser)
+
+     async function registerUser(event){
+      event.preventDefault()
+      //send data as json
+      const Username= document.getElementById('Username')
+      const password1= document.getElementById('password1')
+      const email= document.getElementById('email')
+      const password2= document.getElementById('password2')
+
+
+       const result= await fetch('/api/register',{
+        method: 'post',
+        body: JSON.stringify({
+          Username,
+          email,
+          password1,
+          password2
+
+        }),
+        headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  }
+
+      }).then((res) >= res.JSON(result))
+      console.log()
+
+
+    }
+  </script>
 
   
-  <script>
+  <!--script>
     const form= document.getElementById('signupform')
     form .addEventListener('submit',function(e){
       e.preventDefault()
@@ -108,7 +140,7 @@
     });
   
 
-  </script>
+  </script-->
   
 
   

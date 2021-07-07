@@ -3,14 +3,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require("config");
 const mongoose = require('mongoose');
+const fetch = require('node-fetch');
+
 const cors = require('cors');
 const app = express();
+const Bluebird = require('bluebird');
+ 
+fetch.Promise = Bluebird;
+
+
+// UserRouter= require('./api/routes')
 
 
 
 app.use(cors())
 //const HOST = '127.0.0.1';
-const PORT = 345;
+const PORT = 550;
 
 // db connection
 if (!config.get("myprivatekey")) {
@@ -49,7 +57,18 @@ app.get('/', (req, res) => {
 
 // Application settings
 
-
+app.get("/", (req,res) =>{
+  res.render("home");
+})
+app.get("/userprofile" ,(req,res) =>{
+  res.render("userprofile");
+})
+app.get("/login",(req,res)=>{
+  res.render("login");
+});
+app.get("/register",(req,res)=>{
+  res.render("register");
+});
 
 
 app.use(cors());
