@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: 50
+        maxlength: 50,
+        unique: true
     },
     email: {
         type: String,
@@ -24,22 +25,15 @@ const UserSchema = new mongoose.Schema({
         minlength: 3,
         maxlength: 255
     },
-    address:{
-        type:String,
-    },
-    phone:{
-        type:String,
-    },
-    status:{
-        type:String
-    }
+    
+    
 });
 UserSchema.methods.generateAuthToken = function() { 
     const token = jwt.sign({ _id: this._id, name:this.name,email:this.email}, config.get('myprivatekey')); 
     return token;
   }
   
-const user = mongoose.model('User', UserSchema);
+const user = mongoose.model('UserSchema', UserSchema);
   
 
 // export the mongodb and connection pool objects

@@ -3,22 +3,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require("config");
 const mongoose = require('mongoose');
-const fetch = require('node-fetch');
+const User = require('./models/user')
 
 const cors = require('cors');
 const app = express();
-const Bluebird = require('bluebird');
  
-fetch.Promise = Bluebird;
 
-
-// UserRouter= require('./api/routes')
+ //UserRouter= require('./api/routes')
 
 
 
 app.use(cors())
 //const HOST = '127.0.0.1';
-const PORT = 550;
+const PORT = 4010;
 
 // db connection
 if (!config.get("myprivatekey")) {
@@ -57,20 +54,6 @@ app.get('/', (req, res) => {
 
 // Application settings
 
-app.get("/", (req,res) =>{
-  res.render("home");
-})
-app.get("/userprofile" ,(req,res) =>{
-  res.render("userprofile");
-})
-app.get("/login",(req,res)=>{
-  res.render("login");
-});
-app.get("/register",(req,res)=>{
-  res.render("register");
-});
-
-
 app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -97,8 +80,17 @@ app.use(function(req, res, next) {
 
 app.use('/Api/v1/user', require('./api/routes'));
 app.use('/Api/v1/doctor', require('./api/doctor.router'));
+//app.use(bodyParser.json())
+
+//app.post('/api/register', async (req, res) => {
+  //console.log(req.body)
 
 
+  //const { Username, password1 } = req.body
+  //console.log(await bcrypt.hash(password1,10))
+  //res.json({ status: 'ok'})
+  
+//})
 
 
 

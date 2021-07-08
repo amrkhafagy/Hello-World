@@ -41,7 +41,7 @@
 
             <div class="clear"> </div>
           </div>
-          <input type="submit" value="submit Form" a>
+          <input type="submit" value="submit " a>
         </form>
 
 
@@ -53,7 +53,7 @@
     
    
   <!-- //main end -->
-  <script>
+  <!--script>
     const form =document.getElementById('signupform')
     form.addEventListener('submit', registerUser)
 
@@ -66,7 +66,7 @@
       const password2= document.getElementById('password2')
 
 
-       const result= await fetch('/api/register',{
+       const result= await fetch('/http://localhost:4040/Api/v1/user/signup',{
         method: 'post',
         body: JSON.stringify({
           Username,
@@ -84,10 +84,10 @@
 
 
     }
-  </script>
+  </script-->
 
   
-  <!--script>
+  <script>
     const form= document.getElementById('signupform')
     form .addEventListener('submit',function(e){
       e.preventDefault()
@@ -99,7 +99,7 @@
       
     
 
-      fetch('http://localhost:345/Api/v1/user/userReg',{
+      fetch('http://localhost:4010/Api/v1/user/signup',{
         method: 'post',
         body: JSON.stringify({
           title:name,
@@ -140,7 +140,7 @@
     });
   
 
-  </script-->
+  </script>
   
 
   
