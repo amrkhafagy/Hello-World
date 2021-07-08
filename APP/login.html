@@ -42,73 +42,12 @@
       </div>
     <!--main-->
     <!--javascript -->
-    <!--script>
-      const BASE_URL = `http://localhost:345`;
-      function getHeaders() {
-  // Return headers
-  return new Headers({
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "Authorization": "Bearer " + getAccessToken()
-  });
-}
-async function getDataAsync(url) {
-
-// Requests will use the GET method and permit cross origin requests
-const GET_INIT = { method: 'GET', credentials: 'include', 
-headers: getHeaders(), mode: 'cors', cache: 'default' };
-try {
-    // Call fetch and await the respose
-    // Initally returns a promise
-    const response = await fetch(url, GET_INIT);
-    const json = await response.json();
-
-    return json;
-  } catch (err) {
-    console.log(err);
-    return err;
-  }
-}
-
-
-    </script-->
-    
+ 
   
-  
-<!--script>
-  document.addEventListener('DOMContentLoaded', () => {
-       const email = localStorage.getItem('userName')
-       const password = localStorage.getItem('password')
-
-        console.log('post data', email, password)})
-
-  fetch('http://localhost:235/Api/v1/user',{
-    method:'post',
-    headers: {
-      'content-teyp': 'application/json'
-    },
-    body:JSON.stringify({
-      name: 'user 1'
-    })
-      
-  }).then(res =>{
-    if(res.ok){console.log("not succesful")}
-  })
-  .then(dat => console.log(data))
-  .catch(erroe => 
-  console.log('invalid username and passwor'))
-
-
-  function resetData () {
-       document.getElementById('userName').value = ''
-       document.getElementById('password').value = ''
-    };
-  
-</script-->
-    
    
-
-
+  
+    
+  
     <script>
      
      document.addEventListener('DOMContentLoaded', () => {

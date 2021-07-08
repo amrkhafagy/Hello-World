@@ -19,19 +19,19 @@
       <h1>Doctor Login</h1>
         <div class="form">
           
-          <form class="login-form">
-            <input type="text" required  id="userName" placeholder="username"/>
-            <input id="password" type="password" placeholder="password"/>
-            <button value="login" onclick="validate()">login</button>
-            <p><a href="forget.html">Forgot password?</a></p>
+          <form action="/login" method="POST" id="loginForm">
+                <input type="text" required  id="userName" placeholder="username"/>
+                <input id="password" type="password" placeholder="password"/>
+                <button value="login" onclick="validate()">login</button>
+                <p><a href="forget.html">Forgot password?</a></p>
 
 
 
-            <p>Don't have Account ?<a href="doctorsign.html">SignIn</a></p>
+                <p>Don't have Account ?<a href="doctorsign.html">SignIn</a></p>
 
-            <p>Sign in as a Patient?<a href="loginuser.html">SignIn</a></p>
+                <p>Sign in as a Patient?<a href="loginuser.html">SignIn</a></p>
 
-            <p >Sign in as a Admin?<a href="loginadmin.html">SignIn</a></p>
+                <p >Sign in as a Admin?<a href="loginadmin.html">SignIn</a></p>
 
           </form>
 
@@ -52,7 +52,7 @@
  
  
  
-         fetch(`http://localhost:8088/Api/v1/doctor/userReg`)
+         fetch(`http://localhost:2434/Api/v1/doctor/signin`)
        .then(response => response.json())
        .then(customer => {
          console.log("dsfsfsdfsfsd",customer);

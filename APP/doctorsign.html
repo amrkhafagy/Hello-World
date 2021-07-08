@@ -35,14 +35,7 @@
           <input class="text w3lpass" id="password2" type="password" name="password" placeholder="Confirm Password" required="">
 
 
-          <div class="wthree-text">
-            <label class="anim">
-              <input type="checkbox" class="checkbox" required="">
-              <span>I Agree To The Terms & Conditions</span>
-            </label>
-
-            <div class="clear"> </div>
-          </div>
+          
           <input type="submit" value="SIGNUP" a>
         </form>
 
@@ -58,62 +51,63 @@
 <!--JavaScript-->
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('loginForm').addEventListener('submit', event => {
-    event.preventDefault()
-    ajaxPost()
-  })
-  async function ajaxPost () {
-    // PREPARE FORM DATA
-    const pass1 = document.getElementById('password1').value
-    const pass2 = document.getElementById('password2').value
-    if (pass1 === pass2) {
-      const Username= document.getElementById("Username").value;
-      const email= document.getElementById("email").value;
-      const password= document.getElementById("password").value;
-      return
-      
-    }
-    else{
-          alert("password doesn't match try again");
-        }
-        const formData = {
-      email: document.getElementById('email').value,
-      password: pass1
-    }
-    console.log('post data', formData)
+  const form= document.getElementById('signupform')
+  form .addEventListener('submit',function(e){
+    e.preventDefault()
 
-    try {
-      const response = await fetch('http://127.0.0.1:3000//Api/v1/user/userReg', {
-        method: 'PUT', 
-        credentials: 'same-origin', 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-        
-      })
-      await response.json()
-      alert('"User created Success')
-      window.location.replace('login.html')
-    } catch (e) {
-      alert('Error!')
-      console.log('ERROR: ', e)
-    }
+    const name= document.getElementById('Username').value
+    const email= document.getElementById('email').value
+    const password1= document.getElementById('password1').value;
+    const password2= document.getElementById('password2').value;
+    
+  
 
-    // Reset FormData after Posting
-    resetData()
-  }
-  function resetData () {
-    document.getElementById('Username').value = ''
-    document.getElementById('email').value = ''
-  }
+    fetch('http://localhost:2434/Api/v1/doctor/signup',{
+      method: 'post',
+      body: JSON.stringify({
+        name,
+        email,
+        password1,
+        password2
+      }),
+      headers: {
+  'Content-type': 'application/json; charset=UTF-8',
+}
 })
+  .then(response => response.json())
+  .then(customer => {
+        if(password1 == password2){
+          name: $("#name").val(),
+          email = $("#email").val(),
+          password =  $("#password1").val()
 
 
-      
+        }
+        else{
+            alert("password doesn't match try again");
+          }
+
+          console.log("post data",customer);
+
+
+
+    function resetData () {
+      document.getElementById('userName').value = ''
+      document.getElementById('password').value = ''
+
+
+        }
+        resetData();
+
+      })
+
+  });
+
 
 </script>
+
+
+<!--script -->
 
 
 

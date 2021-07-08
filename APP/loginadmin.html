@@ -21,17 +21,17 @@
       <h1>Admain Login</h1>
         <div class="form">
          
-          <form class="login-form">
-            <input type="text" required id="userName"  placeholder="username"/>
-            <input type="password"  id="password" placeholder="password"/>
-            <button value="login" onclick="validate()">login</button>
-            <p><a href="forget.html">Forgot password?</a></p>
+          <form action="/login" method="POST" id="loginForm">
+              <input type="text" required id="userName"  placeholder="username"/>
+              <input type="password"  id="password" placeholder="password"/>
+              <button value="login" onclick="validate()">login</button>
+              <p><a href="forget.html">Forgot password?</a></p>
 
 
             
-            <p>Sign in as a Doctor?<a href="doctorLog.html">SignIn</a></p>
-            <p>Sign in as a Patient? <a href="loginuser.html">SignIn</a></p>
-            
+              <p>Sign in as a Doctor?<a href="doctorLog.html">SignIn</a></p>
+              <p>Sign in as a Patient? <a href="loginuser.html">SignIn</a></p>
+              
 
 
           </form>
