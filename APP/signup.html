@@ -53,39 +53,8 @@
     
    
   <!-- //main end -->
-  <!--script>
-    const form =document.getElementById('signupform')
-    form.addEventListener('submit', registerUser)
-
-     async function registerUser(event){
-      event.preventDefault()
-      //send data as json
-      const Username= document.getElementById('Username')
-      const password1= document.getElementById('password1')
-      const email= document.getElementById('email')
-      const password2= document.getElementById('password2')
-
-
-       const result= await fetch('/http://localhost:4040/Api/v1/user/signup',{
-        method: 'post',
-        body: JSON.stringify({
-          Username,
-          email,
-          password1,
-          password2
-
-        }),
-        headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  }
-
-      }).then((res) >= res.JSON(result))
-      console.log()
-
-
-    }
-  </script-->
-
+  
+<!--script -->
   
   <script>
     const form= document.getElementById('signupform')
@@ -99,7 +68,7 @@
       
     
 
-      fetch('http://localhost:4010/Api/v1/user/signup',{
+      fetch('http://localhost:2434/Api/v1/user/signup',{
         method: 'post',
         body: JSON.stringify({
           title:name,
@@ -141,6 +110,10 @@
   
 
   </script>
+
+
+<!--script -->
+
   
 
   

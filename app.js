@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors())
 //const HOST = '127.0.0.1';
-const PORT = 4010;
+const PORT = 2434;
 
 // db connection
 if (!config.get("myprivatekey")) {
