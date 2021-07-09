@@ -27,7 +27,7 @@
 
             <input type="password"  id="password" placeholder="password"/>
 
-            <button value="login" onclick="validate()">login</button>
+            <button value="login">login</button>
             
             <p><a href="forget.html">Forgot password?</a></p>
 
@@ -49,16 +49,29 @@
     
   
     <script>
+      const form= document.getElementById('loginForm')
+    form .addEventListener('submit',function(e){
+      e.preventDefault()
      
-     document.addEventListener('DOMContentLoaded', () => {
-       const email = localStorage.getItem('userName')
-       const password = localStorage.getItem('password')
+       
+       const email= document.getElementById('userName').value 
+       const password= document.getElementById('password').value
 
-        console.log('post data', email, password)
+       console.log('post data', email, password)
 
 
 
-        fetch(`http://localhost:2434/Api/v1/user/signin`)
+
+        fetch(`http://localhost:6789/Api/v1/user/signin`,{
+          method: 'post',
+        body:JSON.stringify({
+          email, password
+        }),
+          
+        
+        headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  }})
       .then(response => response.json())
       .then(customer => {
         console.log("dsfsfsdfsfsd",customer);
@@ -79,7 +92,9 @@
      function resetData () {
        document.getElementById('userName').value = ''
        document.getElementById('password').value = ''
-    };
+    }
+  
+  
 
   }); 
       </script>

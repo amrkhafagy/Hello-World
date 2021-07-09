@@ -64,16 +64,21 @@
       const email= document.getElementById('email').value
       const password1= document.getElementById('password1').value;
       const password2= document.getElementById('password2').value;
+      if(password1 !== password2){
+
+  
+            alert("password doesn't match try again");
+          }
       
     
 
-      fetch('http://localhost:2434/Api/v1/user/signup',{
+      fetch('http://localhost:6789/Api/v1/user/signup',{
         method: 'post',
         body: JSON.stringify({
           name,
           email,
-          password1,
-          password2
+          password: password1
+          
         }),
         headers: {
     'Content-type': 'application/json; charset=UTF-8',
@@ -81,28 +86,25 @@
 })
 .then(response => response.json())
 .then(customer => {
-        if(password1 == password2){
-          name: $("#name").val(),
-          email = $("#email").val(),
-          password =  $("#password1").val()
-
-
-        }
-        else{
-            alert("password doesn't match try again");
-          }
+       
 
           console.log("post data",customer);
 
+         
 
 
      function resetData () {
-       document.getElementById('userName').value = ''
-       document.getElementById('password').value = ''
+       document.getElementById('Username').value = ''
+       document.getElementById('password1').value = ''
+       document.getElementById('password2').value = ''
+       document.getElementById('email').value = ''
+
+
 
 
         }
         resetData();
+
 
       })
 

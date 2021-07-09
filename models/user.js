@@ -37,5 +37,4 @@ const user = mongoose.model('UserSchema', UserSchema);
   
 
 // export the mongodb and connection pool objects
-
-exports.User = user; 
+module.exports = user; 

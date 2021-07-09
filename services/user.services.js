@@ -1,9 +1,7 @@
 const  User  = require('../models/user');
 const  Booking  = require('../models/booking');
 const  doctor  = require('../models/doctor');
-
 const bcrypt = require("bcrypt");
-
 
 
 exports.getUserByEmail = async (query) => {

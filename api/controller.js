@@ -14,7 +14,7 @@ exports.registerUser = async (req, res) => {
             error:"User already exists "
         }); 
     }
-    user = await UserServices.create(req.body);
+  user = await UserServices.create(req.body);
 
 
     res.status(201).json({
