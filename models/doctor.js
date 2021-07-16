@@ -44,4 +44,5 @@ DoctorSchema.methods.generateAuthToken = function() {
 }
 const doctor = mongoose.model('Doctor', DoctorSchema);
 
-exports.Doctor = doctor; 
+//exports.Doctor = doctor; 
+module.exports = doctor;

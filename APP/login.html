@@ -22,17 +22,17 @@
         <div class="form">
          
           <form action="/login" method="POST" id="loginForm">
-            <input type="text" required id="userName" placeholder="username"/>
+            <input type="text" required id="userName" placeholder="Username"/>
 
 
-            <input type="password"  id="password" placeholder="password"/>
+            <input type="password"  id="password" placeholder="Password"/>
 
             <button value="login">login</button>
             
             <p><a href="forget.html">Forgot password?</a></p>
 
 
-            <p>Don't have Account ?<a href="userReg.html">SignUp</a></p>
+            <p>Don't have Account ?<a href="signup.html">SignUp</a></p>
             
             <p >Sign in as a Doctor? <a href="doctorsign.html">SignIn</a></p>
 
@@ -50,8 +50,8 @@
   
     <script>
       const form= document.getElementById('loginForm')
-    form .addEventListener('submit',function(e){
-      e.preventDefault()
+      form .addEventListener('submit',function(e){
+         e.preventDefault()
      
        
        const email= document.getElementById('userName').value 
@@ -65,13 +65,12 @@
         fetch(`http://localhost:6789/Api/v1/user/signin`,{
           method: 'post',
         body:JSON.stringify({
-          email, password
+          email,
+          password
         }),
-          
-        
         headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  }})
+          'Content-type': 'application/json; charset=UTF-8',
+        }})
       .then(response => response.json())
       .then(customer => {
         console.log("dsfsfsdfsfsd",customer);
@@ -80,19 +79,20 @@
             localStorage.setItem("username", customer.data.name);
 
             window.location.replace('index.html');
-      },
+          },
       function (e) {
         alert('invalid username and passwor')
         console.log('ERROR: ', e)
       })
     
-     // Reset FormData after Posting
-     resetData();
+    
 
      function resetData () {
        document.getElementById('userName').value = ''
        document.getElementById('password').value = ''
     }
+    // Reset FormData after Posting
+    resetData();
   
   
 

@@ -36,20 +36,21 @@
 
 
           <div class="wthree-text">
-            
+            <label class="anim">
+              <input type="checkbox" class="checkbox" required="">
+              <span>I Agree To The Terms & Conditions</span>
+            </label>
 
             <div class="clear"> </div>
           </div>
-          <input type="submit" value="submit " a>
+          <input type="submit" value="SIGNUP" a>
         </form>
 
 
-        <p>Don't have an Account? <a href="loginuser.html"> Login Now!</a></p>
+        <p>Sign in here <a href="loginadmin.html"> Login Now!</a></p>
 
       </div>
     </div>
-    
-    
    
   <!-- //main end -->
   
@@ -64,10 +65,15 @@
       const email= document.getElementById('email').value
       const password1= document.getElementById('password1').value;
       const password2= document.getElementById('password2').value;
-      if(password1 !== password2){
+      if(password1 == password2){
 
+
+        alert("login succesfully")
+        
+      }
+      else{
   
-            alert("password doesn't match try again");
+           alert("password doesn't match try again");
           }
       
     

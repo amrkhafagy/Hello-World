@@ -57,63 +57,57 @@
     <!-- //main -->
   <!--JavaScript-->
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('loginForm').addEventListener('submit', event => {
-      event.preventDefault()
-      ajaxPost()
-    })
-    async function ajaxPost () {
-      // PREPARE FORM DATA
-      const pass1 = document.getElementById('password1').value
-      const pass2 = document.getElementById('password2').value
-      if (pass1 === pass2) {
-        const Username= document.getElementById("Username").value;
-        const email= document.getElementById("email").value;
-        const password= document.getElementById("password").value;
-        return
-        
-      }
+  <script>
+    const form= document.getElementById('signupform')
+    form .addEventListener('submit',function(e){
+      e.preventDefault()
+  
+      const name= document.getElementById('Username').value
+      const email= document.getElementById('email').value
+      const password1= document.getElementById('password1').value;
+      const password2= document.getElementById('password2').value;
+      if(password1 == password2){
+         alert("login succesfully")
+        }
       else{
-            alert("password doesn't match try again");
+  
+           alert("password doesn't match try again");
           }
-          const formData = {
-        email: document.getElementById('email').value,
-        password: pass1
-      }
-      console.log('post data', formData)
-
-      try {
-        const response = await fetch('http://127.0.0.1:3000//Api/v1/user/userReg', {
-          method: 'PUT', 
-          credentials: 'same-origin', 
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
+      
+    
+  
+      fetch('http://localhost:6789/Api/v1/user/signup',{
+        method: 'post',
+        body: JSON.stringify({
+          name,
+          email,
+          password: password1
           
-        })
-        await response.json()
-        alert('"User created Success')
-        window.location.replace('userReg.html')
-      } catch (e) {
-        alert('Error!')
-        console.log('ERROR: ', e)
-      }
-
-      // Reset FormData after Posting
-      resetData()
-    }
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',}
+  })
+  .then(response => response.json())
+  .then(customer => {
+    console.log("post data",customer);
+    
     function resetData () {
       document.getElementById('Username').value = ''
+      document.getElementById('password1').value = ''
+      document.getElementById('password2').value = ''
       document.getElementById('email').value = ''
     }
-  })
-
-
-        
-
-</script>
+     resetData();
+    })
+  
+    });
+  
+  
+  </script>
+  
+  <!--JavaScript-->
+  
+  
 
 
 
