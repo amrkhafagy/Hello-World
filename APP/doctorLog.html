@@ -20,9 +20,11 @@
         <div class="form">
           
           <form action="/login" method="POST" id="loginForm">
-                <input type="text" required  id="userName" placeholder="username"/>
+
+                <input type="text" required  id="Username" placeholder="Username"/>
                 <input id="password" type="password" placeholder="password"/>
-                <button value="login" onclick="validate()">login</button>
+                <button  type="submit" value="login">login</button>
+                
                 <p><a href="forget.html">Forgot password?</a></p>
 
 
@@ -53,7 +55,7 @@
 
 
             alert("login succesfully")
-            window.location.replace('index.html');
+            window.location.replace('indexdoctor.html');
           
       
   

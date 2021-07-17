@@ -27,13 +27,6 @@
               <button value="login" onclick="validate()">login</button>
               <p><a href="forget.html">Forgot password?</a></p>
 
-
-            
-              <p>Sign in as a Doctor?<a href="doctorLog.html">SignIn</a></p>
-              <p>Sign in as a Patient? <a href="loginuser.html">SignIn</a></p>
-              
-
-
           </form>
         </div>
       </div>
@@ -44,39 +37,8 @@
       
 
        <!--javascript -->
-       <script>
-     
-        document.addEventListener('DOMContentLoaded', () => {
-          const email = localStorage.getItem('userName')
-          const password = localStorage.getItem('password')
-   
-           console.log('post data', email, password)
-   
-   
-   
-           fetch(`http://localhost:6789/Api/v1/admain/userReg`)
-         .then(response => response.json())
-         .then(customer => {
-           console.log("dsfsfsdfsfsd",customer);
-               localStorage.setItem("email", customer.data.email);
-               localStorage.setItem("userid", customer.data._id);
-               localStorage.setItem("username", customer.data.name);
-   
-               window.location.replace('index.html');
-         },
-         function (e) {
-           alert('invalid username and passwor')
-           console.log('ERROR: ', e)
-         })
-        });
-        function resetData () {
-          document.getElementById('userName').value = ''
-          document.getElementById('password').value = ''
-       };
-   
-   
-           
-         </script>
+       
+        
        <!--javascript-->
 </body>
 </html>

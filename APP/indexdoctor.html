@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Font Awesome JS -->
+    <script class="lazy" data-src="https://kit.fontawesome.com/0000000000.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stelySheet/signup.css">
+    <title>List with all the patients</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav  class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admain List </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexadmain.html">All Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="loginLink" class="nav-link" href="alldoctors.html">All Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="loginLink" class="nav-link" href="alluser.html">All Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="loginLink" class="nav-link" href="loginadmin.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     <!--main-->
+
+
+     
+     <div class="">
+        <h2 style="color: green;"> All Appointments</h2>
+    </div>
+    
+    <div class="container">
+        <div class="row" id="appointment-root">
+    </div>
+
+
+
+          <!--main end -->
+          <!--JavaScript-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch(`http://localhost:8080/Api/v1/user/getallbooking`)
+        .then(response => response.json())
+        .then(customer => {
+            const appointmentRoot = document.getElementById('appointment-root')
+            if (customer.data.length === 0) {el.innerHTML += 
+                '<h1>No data Found</h1>'
+        }
+        for (let i = 0; i < customer.data.length; i++) {
+            const date = customer.data[i].date ?? ''
+            const time = customer.data[i].time ?? ''
+            const doctor = customer.data[i].doctor ?? ''
+            const comment = customer.data[i].comment ?? ''
+            const userid = customer.data[i].id ?? ''
+
+
+            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text">','</h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>';}
+            
+        }, function (e) {
+        alert('Error!')
+        console.log('ERROR: ', e)
+      })
+  })
+
+</script>
+
+
+    <!--JavaScript-->
+
+     
+    
+
+     
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script class="lazy" data-src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script class="lazy" data-src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+</body>
+</html>

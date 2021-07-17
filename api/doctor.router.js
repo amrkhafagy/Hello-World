@@ -6,9 +6,9 @@ const DoctorController = require('./doctor.controller');
 
 DoctorRouter.post('/signup',DoctorController.register);
 
-// DoctorRouter.get('/signup', (req, res) => {
-//    res.send('Hello doctor!')
-//   });
+ DoctorRouter.get('/signup', (req, res) => {
+  res.send('Hello doctor!')
+ });
 
 DoctorRouter.post('/signin',DoctorController.signin);
 

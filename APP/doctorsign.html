@@ -18,7 +18,6 @@
   
   <div class="main-w3layouts wrapper">
     <h1>Doctor Sign Up Screen</h1>
-    <h1>Fill in the data below.</h1>
     <div class="main-agileinfo">
       <div class="agileits-top">
         <form class="form" id="signupform" action="/register" method="post">
@@ -48,7 +47,7 @@
         </form>
 
 
-        <p>Don't have an Account? <a href="loginadmin.html"> Login Now!</a></p>
+        <p>Don't have an Account? <a href="doctorLog.html"> Login Now!</a></p>
 
       </div>
     </div>
@@ -69,6 +68,8 @@
     const password2= document.getElementById('password2').value;
     if(password1 == password2){
        alert("login succesfully")
+       window.location.replace('doctorLog.html');
+
       }
     else{
 
