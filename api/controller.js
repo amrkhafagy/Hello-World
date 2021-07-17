@@ -66,7 +66,9 @@ exports.signinUser = async (req,res)=>{
         });
     }
    });
- };
+};
+ 
+ 
 exports.book = async (req,res) => {
   console.log("req", req.body);
   let book = await UserServices.getbook({ doctor: req.body.doctor, date: req.body.date, time: req.body.time });

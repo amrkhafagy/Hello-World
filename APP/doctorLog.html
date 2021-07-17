@@ -43,69 +43,51 @@
     <!--main-->
     <!--javascript -->
     <script>
-     
-      document.addEventListener('DOMContentLoaded', () => {
-        const email = localStorage.getItem('userName')
-        const password = localStorage.getItem('password')
- 
-         console.log('post data', email, password)
- 
- 
- 
-         fetch(`http://localhost:2434/Api/v1/doctor/signin`)
-       .then(response => response.json())
-       .then(customer => {
-         console.log("dsfsfsdfsfsd",customer);
-             localStorage.setItem("email", customer.data.email);
-             localStorage.setItem("userid", customer.data._id);
-             localStorage.setItem("username", customer.data.name);
- 
-             window.location.replace('alldoctors.html');
-       },
-       function (e) {
-         alert('invalid username and passwor')
-         console.log('ERROR: ', e)
-       })
-      });
-      function resetData () {
-        document.getElementById('userName').value = ''
-        document.getElementById('password').value = ''
-     };
- 
- 
-         
-       </script>
-     <!--javascript-->
- 
+      const form= document.getElementById('loginForm')
+      form .addEventListener('submit',function(e){
+        e.preventDefault()
+
+      const name= document.getElementById('Username').value
+      const password= document.getElementById('password').value;
 
 
-<!--javascript -->
 
-<!--script>
+            alert("login succesfully")
+            window.location.replace('index.html');
+          
       
-  function validate(){
-    var userName=document.getElementById("userName").value;
-    var password=document.getElementById("password").value;
   
-    if(userName == "admain" && password == "user")
-    {
-      alert("login succesfully")
-      return false ;
-  
-    }
-    else{
-      alert(" login failed");
-      // Disabling fields after 3 attempts.
-  
-      if( attempt == 0){
-        document.getElementById("username").disabled = true;
-        document.getElementById("password").disabled = true;
-        document.getElementById("submit").disabled = true;
-        return false;
-      }
-    }
+          console.log('post data', name, password)
+
+        fetch('http://localhost:6789/Api/v1/doctor/signin',
+        {
+        method: 'post',
+        body: JSON.stringify({
+          name,
+          password
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+
+    'Content-type': 'application/json; charset=UTF-8',
   }
-      </script-->
+})
+
+.then(response => response.json())
+.then(customer => {
+  console.log("post data",customer);
+
+
+  function resetData () {
+    document.getElementById('Username').value = ''
+    document.getElementById('password').value = ''
+  }
+  resetData();
+})
+      });
+  
+
+  </script>
       <!--javascript-->
 
 

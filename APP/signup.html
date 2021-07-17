@@ -47,7 +47,7 @@
         </form>
 
 
-        <p>Sign in here <a href="loginadmin.html"> Login Now!</a></p>
+        <p>Sign in here <a href="login.html"> Login Now!</a></p>
 
       </div>
     </div>
@@ -69,6 +69,8 @@
 
 
         alert("login succesfully")
+        window.location.replace('login.html');
+
         
       }
       else{
@@ -78,7 +80,7 @@
       
     
 
-      fetch('http://localhost:6789/Api/v1/user/signup',{
+      fetch('http://localhost:6789/Api/v1/user/signin',{
         method: 'post',
         body: JSON.stringify({
           name,
@@ -113,6 +115,7 @@
 
 
       })
+      
 
     });
   

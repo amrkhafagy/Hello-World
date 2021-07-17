@@ -22,12 +22,14 @@
         <div class="form">
          
           <form action="/login" method="POST" id="loginForm">
-            <input type="text" required id="userName" placeholder="Username"/>
 
 
+            <input type="text" required id="Username" placeholder="Username"/>
             <input type="password"  id="password" placeholder="Password"/>
 
-            <button value="login">login</button>
+            <button  type="submit" value="login">login</button>
+
+
             
             <p><a href="forget.html">Forgot password?</a></p>
 
@@ -42,62 +44,57 @@
       </div>
     <!--main-->
     <!--javascript -->
- 
-  
-   
-  
     
-  
+
+
     <script>
       const form= document.getElementById('loginForm')
       form .addEventListener('submit',function(e){
-         e.preventDefault()
-     
-       
-       const email= document.getElementById('userName').value 
-       const password= document.getElementById('password').value
+        e.preventDefault()
 
-       console.log('post data', email, password)
+      const name= document.getElementById('Username').value
+      const password= document.getElementById('password').value;
 
 
 
+            alert("login succesfully")
+            window.location.replace('index.html');
+          
+      
+  
+          console.log('post data', name, password)
 
-        fetch(`http://localhost:6789/Api/v1/user/signin`,{
-          method: 'post',
-        body:JSON.stringify({
-          email,
+        fetch('http://localhost:6789/Api/v1/user/signin',
+        {
+        method: 'post',
+        body: JSON.stringify({
+          name,
           password
         }),
         headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        }})
-      .then(response => response.json())
-      .then(customer => {
-        console.log("dsfsfsdfsfsd",customer);
-            localStorage.setItem("email", customer.data.email);
-            localStorage.setItem("userid", customer.data._id);
-            localStorage.setItem("username", customer.data.name);
+          'Content-Type': 'application/json',
 
-            window.location.replace('index.html');
-          },
-      function (e) {
-        alert('invalid username and passwor')
-        console.log('ERROR: ', e)
-      })
-    
-    
+    'Content-type': 'application/json; charset=UTF-8',
+  }
+})
 
-     function resetData () {
-       document.getElementById('userName').value = ''
-       document.getElementById('password').value = ''
-    }
-    // Reset FormData after Posting
-    resetData();
-  
+.then(response => response.json())
+.then(customer => {
+  console.log("post data",customer);
+
+
+  function resetData () {
+    document.getElementById('Username').value = ''
+    document.getElementById('password').value = ''
+  }
+  resetData();
+})
+      });
   
 
-  }); 
-      </script>
+  </script>
+
+
     <!--javascript-->
 
 
