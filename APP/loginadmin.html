@@ -22,9 +22,11 @@
         <div class="form">
          
           <form action="/login" method="POST" id="loginForm">
-              <input type="text" required id="userName"  placeholder="username"/>
+              <input type="text" required id="Username"  placeholder="Username"/>
               <input type="password"  id="password" placeholder="password"/>
-              <button value="login" onclick="validate()">login</button>
+              
+              <button  type="submit" value="login">login</button>
+
               <p><a href="forget.html">Forgot password?</a></p>
 
           </form>
@@ -37,6 +39,36 @@
       
 
        <!--javascript -->
+       <script>
+          const form= document.getElementById('loginForm')
+      form .addEventListener('submit',function(e){
+        e.preventDefault()
+
+      const name= document.getElementById('Username').value
+      const password= document.getElementById('password').value;
+
+
+
+            alert("login succesfully")
+            window.location.replace('indexadmain.html');
+          
+      
+  
+          console.log('post data', name, password)
+
+        
+  function resetData () {
+    document.getElementById('Username').value = ''
+    document.getElementById('password').value = ''
+  }
+  resetData();
+})
+      
+  
+
+
+
+       </script>
        
         
        <!--javascript-->

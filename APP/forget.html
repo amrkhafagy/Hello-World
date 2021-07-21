@@ -23,7 +23,7 @@
       <h1>password reset here</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
-          <form id="loginForm" action="#" method="post">
+          <form id="resetForm" action="reset_password" method="post">
 
             <input class="text email" type="email"  id="email" name="email" placeholder="User Email" required="">
 
@@ -43,7 +43,7 @@
             </div>
             <input type="submit" value="SIGNUP" a>
           </form>
-          <p>Don't have an Account? <a href="loginuser.html">login </a></p>
+          <p>Sign in? <a href="login.html">login </a></p>
         </div>
       </div>
       
@@ -51,45 +51,72 @@
      
     <!-- //main -->
 
-    <!--JavaScript-->
-<script>
-   document.addEventListener('DOMContentLoaded', () => {
-    // PREPARE FORM DATA
-    const email = localStorage.getItem('email')
-    const id = localStorage.getItem('userid')
-
-    console.log('Get data', email, id)
-
-    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-    fetch('http://localhost:300/Api/v1/user/${email}')
-      .then(response => response.json())
-      .then(customer => {
-
-        
-        document.getElementById('name').value = customer.data.name ?? 'NIL'
-        document.getElementById('email').value = customer.data.email ?? 'NIL'
-      
-
-        console.log('dsfsfsdfsfsd', customer)
-      },
-       function (e) {
-        alert('Error!')
-        console.log('ERROR: ', e)
-      })
-  })
-</script>
-
+<!--JavaScript-->
+    <script>
+      const form= document.getElementById('resetForm')
+      form .addEventListener('submit',function(e){
+        e.preventDefault()
+  
+        const email= document.getElementById('email').value
+        const password1= document.getElementById('password1').value;
+        const password2= document.getElementById('password2').value;
+        if(password1 == password2){
+  
+  
+          alert("login succesfully")
+          window.location.replace('login.html');
+  
+          
+        }
+        else{
     
-        <!--JavaScript-->
+             alert("password doesn't match try again");
+            }
+        
+      
+  
+        fetch('http://localhost:8080/Api/v1/user/signin',{
+          method: 'post',
+          body: JSON.stringify({
+            email,
+            password1: password1,
+            password2: password2    
+          }),
+          headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    }
+  })
+  .then(response => response.json())
+  .then(customer => {
+         
+  
+            console.log("post data",customer);
+  
+           
+  
+  
+       function resetData () {
+        document.getElementById('email').value = ''
+        document.getElementById('password1').value = ''
+        document.getElementById('password2').value = ''
+
+          }
+          resetData();
+  
+  
+        })
+        
+  
+      });
+    
+  
+    </script>
+
+<!--JavaScript-->
 
  
 	
-	
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
   
 </body>
 </html>
