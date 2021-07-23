@@ -55,15 +55,42 @@
     <div class="container">
         <div class="row" id="appointment-root">
     </div>
+    
+<!--main end -->
+<!--JavaScript-->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch(`http://localhost:8080/Api/v1/user/getallbookings`)
+        .then(response => response.json())
+        .then(customer => {
+            const appointmentRoot = document.getElementById('appointment-root')
+            if (customer.data.length === 0) {el.innerHTML += 
+                '<h1>No data Found</h1>'
+        }
+        for (let i = 0; i < customer.data.length; i++) {
+            const date = customer.data[i].date ?? ''
+            const time = customer.data[i].time ?? ''
+            const doctor = customer.data[i].doctor ?? ''
+            const comment = customer.data[i].comment ?? ''
+            const userid = customer.data[i].id ?? ''
+
+
+            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> class="card-text">' +"Message : "+ comment + '</p></div></div></div>';}
 
 
 
-          <!--main end -->
-          <!--JavaScript-->
-<>
+            
+            
+        }, function (e) {
+        alert('Error!')
+        console.log('ERROR: ', e)
+      })
+  })
+
+</script>
+
    
-
-    <!--JavaScript-->
+<!--JavaScript-->
 
      
     

@@ -54,7 +54,7 @@
 <!--JavaScript-->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        fetch(`http://127.0.0.1:3000/Api/v1/user/getalluser`)
+        fetch(`http://localhost:8080/Api/v1/user/getalluser`)
         .then(response => response.json())
         .then(customer => {
             const appointmentRoot = document.getElementById('appointment-root')
@@ -66,9 +66,9 @@
             const doctor = customer.data[i].doctor ?? ''
             const comment = customer.data[i].comment ?? ''
             const userid = customer.data[i]._id ?? ''
-            const gender = customer.data[i].gender ?? ''
+           
             
-            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">' + 'Doctor Name : ' + name + '       ' + '</strong></div><div class="card-body"><h5 class="card-title">' + 'Doctor Gender :  ' + gender + '</p> </div></div></div>'
+            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">' + 'Doctor Name : ' + name + '       ' + '</strong></div><div class="card-body"><h5 class="card-title">' + 'Doctor </p> </div></div></div>'
             }
         }, 
         function (e) {
@@ -79,17 +79,13 @@
 </script>
 
 
-    <!--JavaScript-->
+<!--JavaScript-->
 
      
     
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script class="lazy" data-src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script class="lazy" data-src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
   
 </body>
 </html>
