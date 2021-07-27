@@ -65,11 +65,14 @@
       const email= document.getElementById('email').value
       const password1= document.getElementById('password1').value;
       const password2= document.getElementById('password2').value;
-      if(password1 == password2){
+      if(password1 == password2 )
+      {
 
 
         alert("login succesfully")
         window.location.replace('login.html');
+        //return false;
+
 
         
       }
@@ -80,7 +83,7 @@
       
     
 
-      fetch('http://localhost:8080/Api/v1/user/signin',{
+      fetch('http://localhost:8080/Api/v1/user/signup',{
         method: 'post',
         body: JSON.stringify({
           name,

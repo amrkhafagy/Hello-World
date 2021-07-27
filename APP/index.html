@@ -35,12 +35,13 @@
                     </li>
   
                     <li class="nav-item">
-                      <a id="logout" class="nav-link" href="#">Logout</a>
+                      <a onclick="logout()" class="nav-link" >Logout</a>
                   </li>
                   
                          
                     <li>
-                      <a id="hello" href="#" ></a>
+
+                      <a class="nav-item" id="hello" href="#" ></a>
                     </li>
 
 
@@ -64,7 +65,7 @@
     <div class="content" >
          <div class="row">
             <div class="col-md-6 col-sm-6">
-                <form id="appointment-form" role="form" method="post" action="appointmentForm">
+                <form id="appointment-form" role="form" method="post" action="appointment-form">
                     <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
                           <h2><em><b>Make an appointment</b></em></h2>
                      </div>
@@ -160,6 +161,122 @@
 
 
    <!--JavaScript-->
+   <!--script>
+    $(document).ready(function () {
+         ajaxGet();
+         function ajaxGet() {
+
+              $.ajax({
+                   type: "GET",
+                   contentType: "application/json",
+                   url: ' http://localhost:8080/Api/v1/user/getalldoctors',
+                   dataType: 'json',
+                   success: function (customer) {
+                        if (customer.data.length == 0) { }
+                        else {
+                             for (var i = 0; i < customer.data.length; i++) {
+                                 $("#doctor").append('<option>' + customer.data[i].name + '</option>');
+                             }
+
+                        }
+
+                   },
+                   error: function (e) {
+                        alert("Error!")
+                        console.log("ERROR: ", e);
+                   }
+              });
+
+         }
+    })
+</script>
+
+
+<script>
+
+    var todaydate = new Date();
+    var day = String(todaydate.getDate()).padStart(2, '0');
+    var month = String(todaydate.getMonth() + 1).padStart(2, '0');
+    var year = todaydate.getFullYear();
+    todaydate = year + '-' + month + '-' + day;
+    document.getElementById("date").min=todaydate;
+
+    function logout() {
+         localStorage.clear();
+         window.location.replace('login.html');
+    }
+
+
+
+    $(document).ready(function () {
+         var userid = localStorage.getItem("userid");
+         //alert("Hello "+localStorage.getItem("username"))
+         var user_name= "Hello "+localStorage.getItem("Username");
+         document.getElementById("hello").innerHTML=user_name;
+         if (!userid) {
+              alert("Please Login to Access..??");
+              window.location.replace('login.html');
+         }
+
+
+
+         
+         $("#appointment-form").submit(function (event) {
+              event.preventDefault();
+              ajaxPost();
+         });
+
+
+         function ajaxPost() {
+              userid
+              var id = localStorage.getItem("userid");
+
+              var formData = {
+                   date: $("#date").val(),
+                   time: $("#time").val(),
+                   doctor: $("#doctor").val(),
+                   comment: $("#message").val(),
+                   user: id,
+                   status: "pending"
+
+              }
+
+
+              console.log("post data", formData);
+              // DO POST
+              $.ajax({
+                   type: "POST",
+                   contentType: "application/json",
+                   url: 'http://localhost:8080/Api/v1/user/book',
+                   data: JSON.stringify(formData),
+                   dataType: 'json',
+                   success: function (customer) {
+                        alert("Appointment Created Success");
+                        console.log("dsfsfsdfsfsd", customer);
+                        console.log(customer);
+                        localStorage.setItem("Bid", customer.data._id)
+
+                   },
+                   error: function (e) {
+                        alert("Doctor Not Available ")
+                        console.log("ERROR: ", e);
+                   }
+              });
+
+
+         }
+
+         function resetData() {
+              $("#name").val("");
+              $("#email").val("");
+         }
+    });
+
+
+
+    
+
+</script-->
    <script>
      document.addEventListener('DOMContentLoaded', () => {
       fetch('http://localhost:8080/Api/v1/user/getalldoctors')
@@ -169,7 +286,9 @@
 
          }
         else {
-          for (var i = 0; i < customer.data.length; i++) {$("#doctor").append('<option>' + customer.data[i].name + '</option>');}
+          for (var i = 0; i < customer.data.length; i++) 
+          {$("#doctor").append('<option>' + customer.data[i].name 
+               + '</option>');}
         }
 
         
@@ -194,7 +313,6 @@
           document.getElementById("date").min=todaydate;
 
 
-
           function logout() {
                localStorage.clear();
                window.location.replace('login.html');
@@ -203,14 +321,14 @@
           document.addEventListener('DOMContentLoaded', () => {
             const user_name=Document.getElementById("Username")
             document.getElementById("hello").innerHTML=user_name;
-            if (!userid) {
+            if (userid) {
                     alert("Please Login to Access..??");
-                    window.location.replace('loginuser.html');
+                    window.location.replace('signup.html');
                   }
 
           });
 
-          document.getElementById("#appointment-form").addEventListener('submit', event => {
+          document.getElementById("appointment-form").addEventListener('submit', event => {
               // Prevent the form from submitting via the browser.
 
             event.preventDefault()
@@ -219,8 +337,8 @@
 
 
            function ajaxPost() {
-                    userid
-                    const id = localStorage.getItem("userid");
+               Username
+                    const id = localStorage.getItem("Username");
                     const formData = {
                           date= document.getElementById('date').value= '',
                           time= document.getElementById('time').value = '',
@@ -253,10 +371,12 @@
         console.log('ERROR: ', e)
       }
      }
+     
      function resetData () {
        document.getElementById('name').value = '';
        document.getElementById('email').value = '';
     };
+    resetData ();
 
 
    </script>

@@ -1,5 +1,4 @@
 
-
 const DoctorServices = require('../services/doctor.services');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -19,7 +18,6 @@ exports.register = async (req,res) => {
 
     user = await DoctorServices.create(req.body);
 
-    // await DoctorServices.sendEmail({email:user.email,token:user._id});
 
     res.status(201).json({
         message: "Doctor Created Success",
@@ -73,16 +71,16 @@ exports.signin = async (req,res)=>{
 
 
   
-exports.getUser = async (req,res) => {
-  var user = await DoctorServices.getUserByEmail({email:req.params.email});
-  if(user){
+exports.getUser = async (req, res) => {
+  var user = await DoctorServices.getUserByEmail({ email: req.params.email });
+  if (user) {
     res.status(200).json({
-      data:user
+      data: user
     });
   } else {
-   res.status(400).json({
-     message:"User Not found",
-   });
+    res.status(400).json({
+      message: "User Not found",
+    });
   }
 }
 

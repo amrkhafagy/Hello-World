@@ -78,7 +78,7 @@
     
   
 
-    fetch('http://localhost:8080/Api/v1/user/signup',{
+    fetch('http://localhost:8080/Api/v1/doctor/signup',{
       method: 'post',
       body: JSON.stringify({
         name,
@@ -86,8 +86,7 @@
         password: password1
         
       }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',}
+      
 })
 .then(response => response.json())
 .then(customer => {

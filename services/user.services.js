@@ -70,7 +70,7 @@ exports.getallbook = async (query) => {
 }
 
 exports.getalldoc = async (query) => {
-    const book = await Doctor.find();
+    const book = await doctor.find();
     return book;
 }
 
@@ -86,4 +86,3 @@ exports.deletebook = async (query) => {
     const book = await Booking.findOneAndDelete(query);
     return book;
 }
-

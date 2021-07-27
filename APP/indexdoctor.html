@@ -60,43 +60,103 @@
 <!--main end -->
 <!--JavaScript-->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch(`http://localhost:8080/Api/v1/user/getallbookings`)
-        .then(response => response.json())
-        .then(customer => {
-            const appointmentRoot = document.getElementById('appointment-root')
-            if (customer.data.length === 0) {el.innerHTML += 
-                '<h1>No data Found</h1>'
-        }
-        for (let i = 0; i < customer.data.length; i++) {
-            const date = customer.data[i].date ?? ''
-            const time = customer.data[i].time ?? ''
-            const doctor = customer.data[i].doctor ?? ''
-            const comment = customer.data[i].comment ?? ''
-            const userid = customer.data[i].id ?? ''
+    function myFunction(id) {
+         var formData = {
+              _id: id
+         }
 
-
-            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text">','</h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>';}
-            
-        }, function (e) {
-        alert('Error!')
-        console.log('ERROR: ', e)
-      })
-  })
+         $.ajax({
+              type: "DELETE",
+              contentType: "application/json",
+              url: 'http://localhost:8080/Api/v1/user/deletebook',
+              data: JSON.stringify(formData),
+              dataType: 'json',
+              success: function (customer) {
+                   alert("Appointment has been Cancelled");
+                   console.log("dsfsfsdfsfsd", customer);
+              },
+              error: function (e) {
+                   alert("Error!")
+                   console.log("ERROR: ", e);
+              }
+         });
+    }
 
 </script>
 
 
-    <!--JavaScript-->
+<script>
+function myFunction1(id) {
+    var formData = {
+    _id: id,
+    status: "approved"
+}
 
-     
-    
+$.ajax({
+    type: "PUT",
+    contentType: "application/json",
+    url: 'http://localhost:8080/Api/v1/user/approvebook',
+    data: JSON.stringify(formData),
+    dataType: 'json',
+    success: function (customer) {
+         alert("Appointment Approved");
+         console.log("dsfsfsdfsfsd", customer);
+    },
+    error: function (e) {
+         alert("Error!")
+         console.log("ERROR: ", e);
+    }
+});
+}
 
-     
-    
+</script>
 
 
-    
+<script>
+    $(document).ready(function () {
+
+         ajaxGet();
+
+         function ajaxGet() {
+
+              var docname = localStorage.getItem("docname");
+              alert("Hello "+localStorage.getItem("docname"))
+
+              $.ajax({
+                   contentType: "application/json",
+                   url: 'http://localhost:8080/Api/v1/user/getdocbook/' + docname,
+                   dataType: 'json', success: function (customer) {
+                        if (customer.data.length == 0) {
+                             $("#appointment-root").append('<h1>No data Found</h1>')
+                        }
+                        for (var i = 0; i < customer.data.length; i++) {
+                             var date = customer.data[i].date ? customer.data[i].date : '';
+                             var time = customer.data[i].time ? customer.data[i].time : '';
+                             var doctor = customer.data[i].doctor ? customer.data[i].doctor : '';
+                             var comment = customer.data[i].comment ? customer.data[i].comment : '';
+                             var status = customer.data[i].status ? customer.data[i].status : '';
+
+                             var userid = customer.data[i]._id ? customer.data[i]._id : '';
+                             var sdfds = "myFunction('" + userid + "')";
+                             var approve = "myFunction1('" + userid + "')";
+
+                             $("#appointment-root").append('<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text">' +"Staus :  "+ status + '</h5><p class="card-text">' +"Message : "+ comment + '</p>     <a onclick="' + approve + '" class="btn btn-primary">Approve</a>     <a onclick="' + sdfds + '" class="btn btn-primary">Reject</a></div></div></div>');
+                        }
+                        console.log("dsfsfsdfsfsd", customer);
+                   },
+                   error: function (e) {
+                        alert("Error!")
+                        console.log("ERROR: ", e);
+                   }
+              });
+              // SUBMIT FORM
+
+         }
+    })
+</script>
+
+
+<!--JavaScript-->  
   
 </body>
 </html>

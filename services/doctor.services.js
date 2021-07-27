@@ -1,4 +1,6 @@
-const { Doctor } = require('../models/doctor');
+const  Doctor  = require('../models/doctor');
+const booking = require('../models/booking')
+
 const bcrypt = require("bcrypt");
 
  
