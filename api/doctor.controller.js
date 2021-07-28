@@ -6,6 +6,7 @@ const config = require("config");
 
 
 exports.register = async (req,res) => {
+  //console.log("incoming requst!!!! " ,req.text)
 
     var user = await DoctorServices.getUserByEmail({email:req.body.email});
 
@@ -31,7 +32,7 @@ exports.signin = async (req,res)=>{
   
   var user = await DoctorServices.getUserByEmail({email:req.body.email});
 
-  if(!user){
+  if(user){
     return res.status(409).json({
       error:"Doctor Not exists "
     }); 

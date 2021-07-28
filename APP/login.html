@@ -48,46 +48,52 @@
 
 
     <script>
-      const form= document.getElementById('loginForm')
-      form .addEventListener('submit',(e)=>{
+     const form= document.getElementById('loginForm')
+      form .addEventListener('submit',function(e){
         e.preventDefault()
 
-      const name= document.getElementById('Username').value
-      const password= document.getElementById('password').value;
-
-
-
+      var name= document.getElementById('Username').value
+      var  password= document.getElementById('password').value;
+      if (name == Username || name == "name") {
+                alert("Please enter the Username.");
+                return false;
+                  }
+      if (password == null || password == "") {
+                alert("Please enter the password.");
+                return false;
+            }
+         
             alert("login succesfully")
             window.location.replace('index.html');
           
-      
-  
-          console.log('post data', name, password)
+          console.log('post data')
 
         fetch('http://localhost:8080/Api/v1/user/signin',
         {
-        method: 'post',
-        body: JSON.stringify({
-          name,
-          password
-        }),
-        headers: {
-          'Content-Type': 'application/json',
+          method: 'post',
+          redirect: 'manual',
+          body: JSON.stringify({
+            name,
+            password
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+          }).then(response => response.json())
 
-    'Content-type': 'application/json; charset=UTF-8',
-  }
-})
+          .then(customer => {
+            console.log("post data");
+            console.log("dsfsfsdfsfsd",customer);
+            localStorage.setItem("name", customer.data.name);
+            localStorage.setItem("userid", customer.data._id);
+            localStorage.setItem("Username", customer.data.name);
 
-.then(response => response.json())
-.then(customer => {
-  console.log("post data",customer);
-
+  resetData();
 
   function resetData () {
     document.getElementById('Username').value = ''
     document.getElementById('password').value = ''
   }
-  resetData();
 })
       });
   

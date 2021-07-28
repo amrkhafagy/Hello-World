@@ -43,7 +43,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 // Allow app to support differnt body content types (using the bidyParser package)
-app.use(express.json());
+app.use(bodyParser.json());
 //app.use(body.json());
 //app.use(body.urlencoded({extended:false}));
 app.get('/', (req, res) => {
@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
 
 // Application settings
 
-app.use(cors());
+//app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS');

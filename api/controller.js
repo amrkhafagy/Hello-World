@@ -29,8 +29,12 @@ exports.registerUser = async (req, res) => {
 
 exports.signinUser = async (req,res)=>{
   
-    var user = await UserServices.getUserByEmail({email:req.body.email});
+    console.log("incoming requst!!!! " ,req.text)
+
+  var user = await UserServices.getUserByEmail({ email: req.body.email });
   
+  console.log("User",user);
+
     if(!user){
       return res.status(409).json({
         error:"User Not exists "
@@ -44,7 +48,7 @@ exports.signinUser = async (req,res)=>{
             name:user.name,
             email:user.email,
             userType:'User',
-            userId: user._id
+            
             
         },
         config.get('myprivatekey')
@@ -91,7 +95,7 @@ exports.book = async (req,res) => {
 };
   
 exports.getmybook = async (req,res) => {
-    let book = await UserServices.getbook({user:req.params.userid});
+    let book = await UserServices.getbook({user:req.params.Username});
     if(book){
       res.status(200).json({
         data:book
@@ -116,7 +120,7 @@ exports.getdocbook = async (req,res) => {
   };
   
   exports.getbook = async (req,res) => {
-    let book = await UserServices.getallbook({user:req.params.userid});
+    let book = await UserServices.getallbook({user:req.params.Username});
     if(book){
       res.status(200).json({
         data:book
