@@ -52,16 +52,9 @@
       form .addEventListener('submit',function(e){
         e.preventDefault()
 
-      var name= document.getElementById('Username').value
-      var  password= document.getElementById('password').value;
-      if (name == Username || name == "name") {
-                alert("Please enter the Username.");
-                return false;
-                  }
-      if (password == null || password == "") {
-                alert("Please enter the password.");
-                return false;
-            }
+      const email= document.getElementById('Username').value
+      const  password= document.getElementById('password').value;
+      
          
             alert("login succesfully")
             window.location.replace('index.html');
@@ -73,7 +66,7 @@
           method: 'post',
           redirect: 'manual',
           body: JSON.stringify({
-            name,
+            email,
             password
           }),
           headers: {
@@ -82,19 +75,19 @@
           }).then(response => response.json())
 
           .then(customer => {
-            console.log("post data");
             console.log("dsfsfsdfsfsd",customer);
-            localStorage.setItem("name", customer.data.name);
+            localStorage.setItem("email", customer.data.email);
             localStorage.setItem("userid", customer.data._id);
-            localStorage.setItem("Username", customer.data.name);
+            window.location.replace('index.html');
 
   resetData();
+})
 
   function resetData () {
-    document.getElementById('Username').value = ''
+    document.getElementById('name').value = ''
     document.getElementById('password').value = ''
   }
-})
+
       });
   
 

@@ -5,10 +5,15 @@ const UserController = require('./controller');
 
 
 UserRouter.post('/signup',UserController.registerUser);
-UserRouter.post('/signin',UserController.signinUser);
+UserRouter.post('/signin', UserController.signinUser);
+UserRouter.get('/getallpatients',UserController.getpatients)
+
+
+
+
+
 UserRouter.get('/getallbookings',UserController.getbook);
 UserRouter.get('/getalldoctors',UserController.getdoctors)
-UserRouter.get('/getallpatients', UserController.getpatients)
 
 
 UserRouter.get('/:email',UserController.getUser);
@@ -16,6 +21,7 @@ UserRouter.post('/book', UserController.book);
 UserRouter.delete('/deletebook', UserController.deletebook);
 UserRouter.put('/approvebook', UserController.approvebook);
 UserRouter.get('/getbook/:userid', UserController.getmybook);
+
 
 UserRouter.get('/getdocbook/:docname', UserController.getdocbook);
 UserRouter.get('/getbookbyid/:bookid', UserController.getbookById);

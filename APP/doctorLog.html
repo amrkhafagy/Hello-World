@@ -45,50 +45,51 @@
     <!--main-->
     <!--javascript -->
     <script>
-      const form= document.getElementById('loginForm')
+     const form= document.getElementById('loginForm')
       form .addEventListener('submit',function(e){
         e.preventDefault()
 
-      const name= document.getElementById('Username').value
-      const password= document.getElementById('password').value;
-
-
-
-            alert("login succesfully")
-            window.location.replace('indexdoctor.html');
-          
+      const email= document.getElementById('Username').value
+      const  password= document.getElementById('password').value;
       
-  
-          console.log('post data', name, password)
+         
+            alert("login succesfully")
+            window.location.replace('index.html');
+          
+          console.log('post data')
 
         fetch('http://localhost:8080/Api/v1/doctor/signin',
         {
-        method: 'post',
-        body: JSON.stringify({
-          name,
-          password
-        }),
-        headers: {
+          method: 'post',
+          redirect: 'manual',
+          body: JSON.stringify({
+            email,
+            password
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+          }).then(response => response.json())
 
-    'Content-type': 'application/json; charset=UTF-8',
-  }
-})
+          .then(customer => {
+            console.log("dsfsfsdfsfsd",customer);
+            localStorage.setItem("email", customer.data.email);
+            localStorage.setItem("userid", customer.data._id);
+            window.location.replace('index.html');
 
-.then(response => response.json())
-.then(customer => {
-  console.log("post data",customer);
-
-
-  function resetData () {
-    document.getElementById('Username').value = ''
-    document.getElementById('password').value = ''
-  }
   resetData();
 })
+
+  function resetData () {
+    document.getElementById('name').value = ''
+    document.getElementById('password').value = ''
+  }
+
       });
   
 
   </script>
+
       <!--javascript-->
 
 

@@ -29,7 +29,6 @@ exports.registerUser = async (req, res) => {
 
 exports.signinUser = async (req,res)=>{
   
-    console.log("incoming requst!!!! " ,req.text)
 
   var user = await UserServices.getUserByEmail({ email: req.body.email });
   
