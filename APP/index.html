@@ -74,10 +74,10 @@
 
 
 
-                        <div class="col-md-6 col-sm-6">
-                             <label for="date">Select Date</label>
-                             <input min="2021-12-25" type="date" name="date" id="dateInput" value="" class="form-control">
-                        </div>
+                      <div class="col-md-6 col-sm-6">
+                        <label for="date">Select Date</label>
+                            <input min="" type="date" name="date" id="date" value="" class="form-control">
+                            </div>
                     </br>
 
                     <div class="col-md-6 col-sm-6">
@@ -185,19 +185,20 @@
      }
  })
 
- var dtToday = new Date();
- 
- var month = dtToday.getMonth() + 1;
- var day = dtToday.getDate();
- var year = dtToday.getFullYear();
- if(month < 10)
-     month = '0' + month.toString();
- if(day < 10)
-     day = '0' + day.toString();
- 
- var maxDate = year + '-' + month + '-' + day;
- // alert(maxDate);
- document.getElementById('dateInput').attr('min', maxDate);
+ var todaydate = new Date();
+          var day = String(todaydate.getDate()).padStart(2, '0');
+          var month = String(todaydate.getMonth() + 1).padStart(2, '0');
+          var year = todaydate.getFullYear();
+          todaydate = year + '-' + month + '-' + day;
+          document.getElementById("date").min=todaydate;
+
+          function logout() {
+               localStorage.clear();
+               window.location.replace('login.html');}
+
+
+         
+
 </script>
 
 
