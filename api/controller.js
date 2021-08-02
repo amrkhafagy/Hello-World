@@ -83,7 +83,8 @@ exports.book = async (req, res) => {
 };
 
 exports.getmybook = async (req, res) => {
-  let book = await UserServices.getbook({ user: req.params.Username });
+  console.log("req.query================");
+  let book = await UserServices.getbook({ user: req.query.email });
   if (book) {
     res.status(200).json({
       data: book,
@@ -94,6 +95,7 @@ exports.getmybook = async (req, res) => {
     });
   }
 };
+
 exports.getdocbook = async (req, res) => {
   let book = await UserServices.getdocbook({ doctor: req.params.docname });
   if (book) {
@@ -108,6 +110,7 @@ exports.getdocbook = async (req, res) => {
 };
 
 exports.getbook = async (req, res) => {
+  console.log("req.query==========1======");
   let book = await UserServices.getallbook({ user: req.params.Username });
   if (book) {
     res.status(200).json({
@@ -173,6 +176,7 @@ exports.deletebook = async (req, res) => {
     });
   }
 };
+
 exports.approvebook = async (req, res) => {
   console.log("approve book ");
   console.log(req.body);

@@ -13,7 +13,7 @@ UserRouter.get("/:email", UserController.getUser);
 UserRouter.post("/book", UserController.book);
 UserRouter.delete("/deletebook", UserController.deletebook);
 UserRouter.put("/approvebook", UserController.approvebook);
-UserRouter.get("/getbook/:userid", UserController.getmybook);
+UserRouter.get("/getbook", UserController.getmybook);
 
 UserRouter.get("/getdocbook/:docname", UserController.getdocbook);
 UserRouter.get("/getbookbyid/:bookid", UserController.getbookById);
