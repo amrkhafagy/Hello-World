@@ -48,50 +48,42 @@
 
 
     <script>
-     const form= document.getElementById('loginForm')
-      form .addEventListener('submit',function(e){
-        e.preventDefault()
+      const form = document.getElementById("loginForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      const email= document.getElementById('Username').value
-      const  password= document.getElementById('password').value;
-      
-         
-            alert("login succesfully")
-            window.location.replace('index.html');
-          
-          console.log('post data')
+        const email = document.getElementById("Username").value;
+        const password = document.getElementById("password").value;
+        console.log("post data");
 
-        fetch('http://localhost:8080/Api/v1/user/signin',
-        {
-          method: 'post',
-          redirect: 'manual',
+        fetch("http://localhost:8080/Api/v1/user/signin", {
+          method: "post",
+          redirect: "manual",
           body: JSON.stringify({
             email,
-            password
+            password,
           }),
           headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        }
-          }).then(response => response.json())
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((response) => response.json())
 
-          .then(customer => {
-            console.log("dsfsfsdfsfsd",customer);
+          .then((customer) => {
             localStorage.setItem("email", customer.data.email);
             localStorage.setItem("userid", customer.data._id);
-            window.location.replace('index.html');
+            alert("login succesfully");
+            window.location.replace("index.html");
 
-  resetData();
-})
+            resetData();
+          });
 
-  function resetData () {
-    document.getElementById('name').value = ''
-    document.getElementById('password').value = ''
-  }
-
+        function resetData() {
+          document.getElementById("name").value = "";
+          document.getElementById("password").value = "";
+        }
       });
-  
-
-  </script>
+    </script>
 
 
     <!--javascript-->
