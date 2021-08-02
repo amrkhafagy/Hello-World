@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 exports.register = async (req, res) => {
-  //console.log("incoming requst!!!! " ,req.text)
 
   var user = await DoctorServices.getUserByEmail({ email: req.body.email });
 
@@ -24,44 +23,45 @@ exports.register = async (req, res) => {
   });
 };
 
-exports.signin = async (req, res) => {
-  var user = await DoctorServices.getUserByEmail({ email: req.body.email });
+exports.signin = async (req,res)=>{
+  
+  var user = await DoctorServices.getUserByEmail({email:req.body.email});
 
-  if (user) {
+  if(!user){
     return res.status(409).json({
-      error: "Doctor Not exists ",
-    });
+      error:"Doctor Not exists "
+    }); 
   }
-
   const hash = user.password;
-
   bcrypt.compare(req.body.password, hash, function (err, result) {
-    if (result) {
-      const token = jwt.sign(
-        {
-          name: user.name,
-          email: user.email,
-          userType: "User",
-          userId: user._id,
+      if(result){
+        const token= jwt.sign({
+            name:user.name,
+            email:user.email,
+            userType:'User',
+            userId:user._id
+
         },
-        config.get("myprivatekey"),
-        {
-          expiresIn: "1h",
+        config.get('myprivatekey')
+        ,
+       {
+          expiresIn:"1h"
         }
-      );
-      console.log("login success " + token);
-      res.header("x-auth-token", token).status(200).json({
-        message: "login Successfuly...!!!",
-        token: token,
-        data: user,
-      });
-    } else {
-      res.status(404).json({
-        message: "Wrong Password",
-      });
+        );
+        console.log("login success "+token)
+        res.header("x-auth-token", token).status(200).json({
+            message:"login Successfuly...!!!",
+            token:token,
+            data:user
+        });
+      }else{
+
+        res.status(404).json({
+            message:"Wrong Password"
+        });
     }
-  });
-};
+   });
+ };
 
 exports.getUser = async (req, res) => {
   var user = await DoctorServices.getUserByEmail({ email: req.params.email });

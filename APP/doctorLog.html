@@ -19,7 +19,7 @@
       <h1>Doctor Login</h1>
         <div class="form">
           
-          <form action="/signin" method="POST" id="loginForm">
+          <form action="/signup" method="POST" id="loginForm">
 
                 <input type="text" required  id="Username" placeholder="Username"/>
                 <input id="password" type="password" placeholder="password"/>
@@ -70,7 +70,7 @@
             localStorage.setItem("email", customer.data.email);
             localStorage.setItem("userid", customer.data._id);
             alert("login succesfully");
-            window.location.replace("indexdoctor.html");
+            window.location.replace("index.html");
 
             resetData();
           });
@@ -81,7 +81,6 @@
         }
       });
     </script>
-
       <!--javascript-->
 
 
