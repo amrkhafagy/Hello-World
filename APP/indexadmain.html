@@ -38,7 +38,7 @@
                         <a id="loginLink" class="nav-link" href="alluser.html">All Patients</a>
                     </li>
                     <li class="nav-item">
-                        <a id="loginLink" class="nav-link" href="loginadmin.html">Logout</a>
+                        <a id="loginLink" class="nav-link" href="log.html">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +75,12 @@
             const userid = customer.data[i].id ?? ''
 
 
-            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> class="card-text">' +"Message : "+ comment + '</p></div></div></div>';}
+            appointmentRoot.innerHTML += 
+
+            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"></h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>'
+                
+                
+                ;}
 
 
 

@@ -39,10 +39,9 @@
                   </li>
                   
                          
-                    <li>
-
-                      <a class="nav-item" id="hello" href="#" ></a>
-                    </li>
+                  <li class="nav-item">
+                    <a id="hello" class="nav-link" ></a>
+                </li>
 
 
                 </ul>
@@ -161,18 +160,27 @@
 
 
    <!--JavaScript-->
-   
    <script>
+
+   
     let selectTag = document.getElementById("doctor");
     const form = document.getElementById("appointment-form");
+    var user_name= "welcome : "+localStorage.getItem("email");
+        document.getElementById("hello").innerHTML=user_name;
+    
+
+
 
     form.addEventListener("submit", function (e) {
        e.preventDefault();
-
+       
+      
       const date = document.getElementById("date").value;
        const time = document.getElementById("time").value;
        const doctor = document.getElementById("doctor").value;
        const message = document.getElementById("message").value;
+
+
 
        fetch("http://localhost:8080/Api/v1/user/book", {
          method: "post",
@@ -207,6 +215,8 @@
               window.location.replace('login.html');
          }
 
+
+
     document.addEventListener('DOMContentLoaded', () => {
      fetch('http://localhost:8080/Api/v1/user/getalldoctors')
      .then(response => response.json())
@@ -232,101 +242,14 @@
           var year = todaydate.getFullYear();
           todaydate = year + '-' + month + '-' + day;
           document.getElementById("date").min=todaydate;
-
   </script>
 
   
-<!--script>
-  let selectTag = document.getElementById("doctor");
 
-  document.addEventListener('DOMContentLoaded', () => {
-
-   fetch('http://localhost:8080/Api/v1/user/getalldoctors')
-   .then(response => response.json())
-   .then(customer => {
-     console.log("customer==================", customer);
-     
-     if (customer.data.length !== 0) {
-       for (var i = 0; i < customer.data.length; i++) {
-         selectTag.innerHTML += `<option placeholder='Select Docter'>${customer.data[i].name}</option>`;
-       }
-     }
-   }
-   )
-    function error (e) {
-       alert('Error!')
-       console.log('ERROR: ', e)
-     }
- })
-
- var todaydate = new Date();
-          var day = String(todaydate.getDate()).padStart(2, '0');
-          var month = String(todaydate.getMonth() + 1).padStart(2, '0');
-          var year = todaydate.getFullYear();
-          todaydate = year + '-' + month + '-' + day;
-          document.getElementById("date").min=todaydate;
-
-          function logout() {
-               localStorage.clear();
-               window.location.replace('login.html');}
+   <!--JavaScript-->
 
 
-
-
-let selectTag = document.getElementById("doctor");
-const form = document.getElementById("appointment-form");
-
-     form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const date = document.getElementById("dateInput").value;
-        const time = document.getElementById("time").value;
-        const doctor = document.getElementById("doctor").value;
-        const message = document.getElementById("message").value;
-
-        fetch("http://localhost:8080/Api/v1/user/book", {
-          method: "post",
-          redirect: "manual",
-          body: JSON.stringify({
-            date,
-            doctor,
-            time,
-            message
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
-          .then((response) => response.json())
-          .then((customer) => {
-            console.log("customer=================", customer)
-            localStorage.setItem("email", customer.data.email);
-            localStorage.setItem("userid", customer.data._id);
-
-            resetData();
-          });
-
-        function resetData() {
-          document.getElementById("name").value = "";
-          document.getElementById("password").value = "";
-        }
-      });
-
-
-         
-
-</script-->
-
-
-<!--JavaScript--> 
-
-
-
-
-
-
-
-
+*/
      
     
   

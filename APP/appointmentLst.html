@@ -33,8 +33,9 @@
                     <li class="nav-item">
                         <a id="loginLink" class="nav-link" href="appointmentLst.html">My Appointment </a>
                     </li>
-                    
-                    <li><a id="hello" href="#" class="nav-link"></a></li>
+                    <li class="nav-item">
+                    <a id="hello" class="nav-link" ></a>
+                    </li>
                     
                 </ul>
             </div>
@@ -55,19 +56,17 @@
 <!--JavaScript-->
 <script>
 
-// deleting appointment
-
-
-  var list = document.getElementById("appointment-root");
+var list = document.getElementById("appointment-root");
   list.removeChild(list.childNodes[0]);
 
-   
-
+    var user_name= "welcome Back: "+localStorage.getItem("email");
+        document.getElementById("hello").innerHTML=user_name;
 
         document.addEventListener('DOMContentLoaded', () => {
         fetch(`http://localhost:8080/Api/v1/user/getbook`)
         .then(response => response.json())
         .then(customer => {
+            console.log("customer===================>", customer)
             const appointmentRoot = document.getElementById('appointment-root')
             if (customer.data.length === 0) {el.innerHTML += 
                 '<h1>No data Found</h1>'
@@ -80,13 +79,16 @@
             const userid = customer.data[i].id ?? ''
 
 
-            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text">','</h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>';}
+            appointmentRoot.innerHTML += 
+            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"> </h5><p class="card-text">' +"Message : "+ comment + '</p><a onclick="" class="btn btn-primary">Cancel</a></div></div></div>'
+            ;}
             
         }, function (e) {
         alert('Error!')
         console.log('ERROR: ', e)
       })
   })
+ 
  
   </script>
   

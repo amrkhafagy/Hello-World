@@ -124,7 +124,7 @@ $.ajax({
 
               $.ajax({
                    contentType: "application/json",
-                   url: 'http://localhost:8080/Api/v1/user/getdocbook/' + docname,
+                   url: 'http://localhost:8080/Api/v1/user/getallbookings' + docname,
                    dataType: 'json', success: function (customer) {
                         if (customer.data.length == 0) {
                              $("#appointment-root").append('<h1>No data Found</h1>')
