@@ -60,31 +60,17 @@
     
   
   <script>
-    const form= document.getElementById('signupform')
-    form .addEventListener('submit',function(e){
-      e.preventDefault()
+    const form = document.getElementById('signupform')
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-      const name= document.getElementById('Username').value
-      const email= document.getElementById('email').value
-      const password1= document.getElementById('password1').value;
-      const password2= document.getElementById('password2').value;
-      if(password1 == password2 )
-      {
-        alert("login succesfully")
-        window.location.replace('login.html');
-        //return false;
-
-
-        
-      }
-      else{
-  
-           alert("password doesn't match try again");
-          }
-      
+      const name = document.getElementById('Username').value
+      const email = document.getElementById('email').value
+      const password1 = document.getElementById('password1').value;
+      const password2 = document.getElementById('password2').value;
     
-
-      fetch('http://localhost:8080/Api/v1/user/signup',{
+      if(password1 == password2 ) {
+        fetch('http://localhost:8080/Api/v1/user/signup',{
         method: 'post',
         redirect: 'manual',
         body: JSON.stringify({
@@ -92,20 +78,21 @@
           email,
           password: password1
           
-        }),
-        headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  }
-})
-.then(response => response.json())
-.then(customer => {
-       
-
-          console.log("post data",customer);
-
-         
-          resetData();
-        })
+        }), headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            }
+          })
+          .then(response => response.json())
+          .then(customer => {
+            console.log("post data",customer);
+            alert("login succesfully");
+            window.location.replace('login.html');
+            resetData();
+          })
+        //return false;
+      } else{
+        alert("password doesn't match try again");
+      }
 
      function resetData () {
        document.getElementById('Username').value = ''
@@ -114,17 +101,9 @@
        document.getElementById('email').value = ''
 
         }
-       
-
-
-     
-      
-
     });
-  
 
   </script>
-
 
 <!--script -->
 
