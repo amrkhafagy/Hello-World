@@ -58,26 +58,38 @@
           <!--main end-->
 
     <!--JavaScript-->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch('http://localhost:8080/Api/v1/user/getalldoctors')
-      .then(response => response.json())
-      then(customer => {
-        const appointmentRoot = document.getElementById('appointment-root')
-        if (customer.data.length === 0) {
-          el.innerHTML += '<h1>No data Found</h1>'
-        }
-        for (let i = 0; i < customer.data.length; i++) {
-          const name = customer.data[i].name ?? ''
-          appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">' + 'Doctor Name : ' + name + '       ' + '</strong></div><div class="card-body"><h5 class="card-title">' + 'Doctor Gender :  ' + gender + '</p> </div></div></div>'
-        }
-    }, function (e) {
-        alert('Error!')
-        console.log('ERROR: ', e)
-      })
-  })
-
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          fetch("http://localhost:8080/Api/v1/user/getalldoctors")
+            .then((response) => response.json())
+            .then(
+              (customer) => {
+                const appointmentRoot =
+                  document.getElementById("appointment-root");
+                if (customer.data.length === 0) {
+                  appointmentRoot.innerHTML += "<h1>No data Found</h1>";
+                }
+                for (let i = 0; i < customer.data.length; i++) {
+                  const name = customer?.data[i]?.name;
+                  appointmentRoot.innerHTML += `
+                      <div class="column">
+                          <div class="card">
+                              <div class="card-header">
+                                  <strong style="color: green;">
+                                  Doctor Name:
+                                  ${name}
+                              </div>
+                          </div>
+                      </div>`;
+                }
+              },
+              function (e) {
+                alert("Error!");
+                console.log("ERROR: ", e);
+              }
+            );
+        });
+      </script>
 
 
     <!--JavaScript--> 

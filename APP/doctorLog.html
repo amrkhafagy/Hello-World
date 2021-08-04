@@ -51,7 +51,6 @@
 
         const email = document.getElementById("Username").value;
         const password = document.getElementById("password").value;
-        console.log("post data");
 
         fetch("http://localhost:8080/Api/v1/doctor/signin", {
           method: "post",
@@ -67,10 +66,12 @@
           .then((response) => response.json())
 
           .then((customer) => {
+            console.log("dsfsfsdfsfsd", customer);
             localStorage.setItem("email", customer.data.email);
             localStorage.setItem("userid", customer.data._id);
+
             alert("login succesfully");
-            window.location.replace("index.html");
+            window.location.replace("indexdoctor.html");
 
             resetData();
           });
