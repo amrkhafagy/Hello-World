@@ -71,13 +71,13 @@
             const date = customer.data[i].date ?? ''
             const time = customer.data[i].time ?? ''
             const doctor = customer.data[i].doctor ?? ''
-            const comment = customer.data[i].comment ?? ''
+            const message = customer.data[i].message ?? ''
             const userid = customer.data[i].id ?? ''
 
 
             appointmentRoot.innerHTML += 
 
-            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"></h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>'
+            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"></h5><p class="card-text">' +"Message : "+ message + '</p></div></div></div>'
                 
                 
                 ;}
