@@ -15,7 +15,7 @@
     <!-- Navigation -->
     <nav  class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">List with all  the Appointments </a>
+            <a class="navbar-brand" href="#">My Appointment </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
@@ -54,19 +54,15 @@
 
           <!--main end-->
 <!--JavaScript-->
+
 <script>
-
-var list = document.getElementById("appointment-root");
-  list.removeChild(list.childNodes[0]);
-
-    var user_name= "welcome Back: "+localStorage.getItem("email");
+    var user_name= "welcome : "+localStorage.getItem("email");
         document.getElementById("hello").innerHTML=user_name;
-
-        document.addEventListener('DOMContentLoaded', () => {
-        fetch(`http://localhost:8080/Api/v1/user/getbook`)
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch(`http://localhost:8080/Api/v1/user/getallbookings`)
         .then(response => response.json())
         .then(customer => {
-            console.log("customer===================>", customer)
             const appointmentRoot = document.getElementById('appointment-root')
             if (customer.data.length === 0) {el.innerHTML += 
                 '<h1>No data Found</h1>'
@@ -80,24 +76,23 @@ var list = document.getElementById("appointment-root");
 
 
             appointmentRoot.innerHTML += 
-            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"> </h5><p class="card-text">' +"Message : "+ comment + '</p><a onclick="" class="btn btn-primary">Cancel</a></div></div></div>'
-            ;}
+
+            '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> <p class="card-text"></h5><p class="card-text">' +"Message : "+ comment + '</p></div></div></div>'
+                
+                
+                ;}
+
+
+
+            
             
         }, function (e) {
         alert('Error!')
         console.log('ERROR: ', e)
       })
   })
- 
- 
-  </script>
-  
 
-     
-    
-
-
-    
+</script>
   
 </body>
 </html>
