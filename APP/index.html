@@ -177,9 +177,9 @@
        
       
       const date = document.getElementById("date").value;
-       const time = document.getElementById("time").value;
-       const doctor = document.getElementById("doctor").value;
-       const message = document.getElementById("message").value;
+      const time = document.getElementById("time").value;
+      const doctor = document.getElementById("doctor").value;
+      const message = document.getElementById("message").value;
 
 
 
@@ -196,12 +196,16 @@
            "Content-type": "application/json; charset=UTF-8",
          },
        })
-         .then((response) => response.json())
-         .then((customer) => {
-           console.log("customer=================", customer)
-           localStorage.setItem("email", customer.data.email);
-           localStorage.setItem("userid", customer.data._id);
+        
+          .then((response) => response.json())
+          .then((customer) => {
+            console.log("customer=================", customer)
+            localStorage.setItem("email", customer.data.email);
+            localStorage.setItem("userid", customer.data._id);
+
+            
            alert("submission succesfully");
+
 
            resetData();
          });

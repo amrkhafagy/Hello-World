@@ -66,7 +66,7 @@
             const Message = customer.data[i].Message ?? ''
             const userid = customer.data[i].id ?? ''
 
-            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p> class="card-text">' +"Message : "+ Message + '</p></div></div></div>';}
+            appointmentRoot.innerHTML += '<div class="column"><div class="card"><div class="card-header"><strong style="color: green;">'+ "Time and Date : "+ time +'     '+ date + '  ' +  '</strong></div><div class="card-body"><h5 class="card-title">'+ "Doctor Name :  "+ doctor + '</p></p></div></div></div>';}
         }, function (e) {
         alert('Error!')
         console.log('ERROR: ', e)
